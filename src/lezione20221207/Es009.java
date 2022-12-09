@@ -22,11 +22,12 @@ public class Es009 {
         return max;
     }
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        System.out.println("inserisci il primo numero da confrontare");
-        int n1 = scn.nextInt();
-        System.out.println("inserisci il secondo numero da confrontare");
-        int n2 = scn.nextInt();
-        System.out.println("Il numero maggiore è "+max(n1,n2));
+        try(Scanner scn = new Scanner(System.in)){
+            System.out.println("inserisci il primo numero da confrontare");
+            int n1 = scn.nextInt();
+            System.out.println("inserisci il secondo numero da confrontare");
+            int n2 = scn.nextInt();
+            System.out.println("Il numero maggiore è "+max(n1,n2));
+        }
     }
 }

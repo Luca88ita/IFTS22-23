@@ -16,10 +16,10 @@ public class Es012 {
         return result;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("inserisci il valore dell'ultimo valore da sommare");
-        int numero1 = scanner.nextInt();
-        System.out.println(sum(numero1));
-
+        try(Scanner scanner = new Scanner(System.in)){
+            System.out.println("inserisci il valore dell'ultimo valore da sommare");
+            int numero1 = scanner.nextInt();
+            System.out.println(sum(numero1));
+        }
     }
 }

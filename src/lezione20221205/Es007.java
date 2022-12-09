@@ -3,7 +3,7 @@ package lezione20221205;
  * Esercii sugli array
  * */
 
-import java.sql.Array;
+//import java.sql.Array;
 import java.util.Scanner;
 
 public class Es007 {
@@ -23,15 +23,15 @@ public class Es007 {
         System.out.println(avg/arr.length);
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int[] array = new int[5];
+        try(Scanner scanner = new Scanner(System.in)){
+            int[] array = new int[5];
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("Inserisci il "+(i+1)+"° elemento dell'array");
-            array[i]= scanner.nextInt();
+            for (int i = 0; i < array.length; i++) {
+                System.out.println("Inserisci il "+(i+1)+"° elemento dell'array");
+                array[i]= scanner.nextInt();
+            }
+            printArray(array);
+            avgArray(array);
         }
-        printArray(array);
-        avgArray(array);
-
     }
 }

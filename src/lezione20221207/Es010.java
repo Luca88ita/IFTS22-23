@@ -13,13 +13,13 @@ public class Es010 {
         return max;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         int[] array = new int[5];
-
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("Inserisci il "+(i+1)+"° elemento dell'array");
-            array[i]= scanner.nextInt();
+        try(Scanner scanner = new Scanner(System.in)){
+            for (int i = 0; i < array.length; i++) {
+                System.out.println("Inserisci il "+(i+1)+"° elemento dell'array");
+                array[i]= scanner.nextInt();
+            }
+            System.out.print("Il numero maggiore tra i 5 inseriti è "+max(array));
         }
-        System.out.print("Il numero maggiore tra i 5 inseriti è "+max(array));
     }
 }

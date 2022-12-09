@@ -15,9 +15,10 @@ public class Es013 {
         return n;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("inserisci il valore da rendere assoluto");
-        double numero1 = scanner.nextDouble();
-        System.out.println(abs(numero1));
+        try(Scanner scanner = new Scanner(System.in)){
+            System.out.println("inserisci il valore da rendere assoluto");
+            double numero1 = scanner.nextDouble();
+            System.out.println(abs(numero1));
+        }
     }
 }

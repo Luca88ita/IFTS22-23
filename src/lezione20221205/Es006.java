@@ -1,9 +1,6 @@
 package lezione20221205;
 
 import java.util.Scanner;
-    /*
-    * Programma per richiedere n tel senza prefisso 9/10 cifre e chiedere se corretto il messaggio da inviare e ristampare i dati a video
-    * */
 
 public class Es006 {
     /**

@@ -8,9 +8,11 @@ public class Es014 {
         return n;
     }
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        System.out.println("inserisci il valore n");
-        double n1=scn.nextDouble();
-        System.out.println("Il risultato della funzione è "+es14(n1));
+        try(Scanner scn = new Scanner(System.in)){
+            System.out.println("inserisci il valore n");
+            double n1=scn.nextDouble();
+            System.out.println("Il risultato della funzione è "+es14(n1));
+        }
+
     }
 }
