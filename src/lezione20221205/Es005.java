@@ -3,7 +3,7 @@ package lezione20221205;
 * Esercizio per l'input da tastiera
 * */
 
-import java.io.InputStream;
+//import java.io.InputStream; // <-- questa è un'atra libreria di input
 import java.util.Scanner;
 
 public class Es005 {
@@ -33,8 +33,11 @@ public class Es005 {
         }
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        float eta = scanner.nextFloat();
-        attSchool(eta);
+        System.out.println("Inserisci l'età della persona");
+        try (Scanner scn = new Scanner(System.in)){
+            float eta = scn.nextFloat();
+            attSchool(eta);
+        }
+        
     }
 }

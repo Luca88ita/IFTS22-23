@@ -29,10 +29,10 @@ public class Es001 {
     public static void main(String[] args) {
         System.out.println("Hello world!");
         /*System.exit(17); */
-        int a; /* rappresenta il numero intero a 32 bit, da -2B a 2B */
-        byte b; /* rappresenta il numero intero a 8 bit, da -128 a 127 */
-        short c; /* rappresenta il numero intero a 16 bit, da -32K a 32K */
-        long d; /* rappresenta il numero intero a 64 bit */
+        int a = 2; /* rappresenta il numero intero a 32 bit, da -2B a 2B */
+        byte b = 2; /* rappresenta il numero intero a 8 bit, da -128 a 127 */
+        short c = 2; /* rappresenta il numero intero a 16 bit, da -32K a 32K */
+        long d = 2l; /* rappresenta il numero intero a 64 bit */
 
         float cc = 1.2F; /* rappresenta il numero con virgola a 32bit */
         double dd = 1.2; /* rappresenta il numero con virgola a 64bit */
@@ -40,6 +40,7 @@ public class Es001 {
         char ch = 'a';
 
         boolean bb = true; /* occupano 8 bit (sprecandoli) */
+        System.out.println(a+" "+b+" "+c+" "+d+" "+cc+" "+dd+" "+ch+" "+bb);
         /*-----------------------*/
         System.out.println("/*-----------------------*/");
         // conversione esplicita
@@ -54,9 +55,9 @@ public class Es001 {
         System.out.println(myDouble2);   // Outputs 9.0
         System.out.println("/*-----------------------*/");
         String s = "ciao";
-        String s2 = new String();
-
+        String s2 = new String("ciao 2");
         Date ddd = new Date();
+        System.out.println(s2+" "+ddd);
         Point p = new Point(2,3);
         System.out.println(p+" - "+s);
         System.out.println(sum(2,3));

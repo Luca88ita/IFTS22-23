@@ -2,7 +2,7 @@ package lezione20221207;
 
 import java.util.Scanner;
 /*
-* tabellina ddi un numero dato
+* tabellina di un numero dato
 * */
 
 public class Es015 {
