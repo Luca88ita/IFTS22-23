@@ -20,6 +20,7 @@ public class Es012 {
             System.out.println("inserisci il valore dell'ultimo valore da sommare");
             int numero1 = scanner.nextInt();
             System.out.println(sum(numero1));
+            System.out.println("Lo stesso risultato si può ottenere con la formula (n*(n+1))/2 = "+(numero1*(numero1+1))/2);
         }
     }
 }

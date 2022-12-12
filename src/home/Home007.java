@@ -48,7 +48,24 @@ public static void overrideTxt(Scanner x){
     e.printStackTrace();
   }
 }
-/*************************************************/
+  /*************************************************/
+  public static void modifyTxt(Scanner x){
+    try {
+      System.out.println("Inserisci il nome del file .txt da modificare (non scrivere l'estensione)");
+      String fileName = x.nextLine();
+      //String fileContent = openTxt(x);
+      FileWriter myWriter = new FileWriter("./src/home/"+fileName+".txt");
+      System.out.println("Inserisci il testo da inserire nel documento");
+      String fileModString = x.nextLine();
+      myWriter.write(fileModString);
+      myWriter.close();
+      System.out.println("Stringa aggiunta correttamente al file");
+    } catch (IOException e) {
+      System.out.println("Errore durante la scrittura del file!");
+      e.printStackTrace();
+    }
+  }
+  /*************************************************/
 public static void openTxt(Scanner x){
   try {
     System.out.println("Inserisci il nome del file .txt da aprire (non scrivere l'estensione)");
