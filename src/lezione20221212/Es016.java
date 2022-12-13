@@ -14,6 +14,7 @@ public class Es016 {
             System.out.println("inserisci il "+(i+1)+"° valore");
             arr[i] = scn.nextInt();
         }
+        scn.close();
         return arr;
     }
     public static void arrayScan2 (int[] arr){
@@ -22,6 +23,7 @@ public class Es016 {
             System.out.println("inserisci il "+(i+1)+"° valore");
             arr[i] = scn.nextInt();
         }
+        scn.close();
     }
     public static int[] arrayRandom(){
         int[] arr = new int [10];

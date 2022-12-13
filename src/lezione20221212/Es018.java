@@ -3,25 +3,25 @@ package lezione20221212;
 import java.util.Scanner;
 
 public class Es018 {
-  public static void task(){
-    Scanner scn = new Scanner(System.in);
-    String word = scn.nextLine();
+  public static void task(String word){
     String wordUp = word.toUpperCase();
     System.out.println("Il nome inserito in maiuscolo è "+wordUp);
   }
   public static void main(String[] args) {
-    char q;
+    //char q;
     String quit;
-    Scanner stop = new Scanner(System.in);
+    Scanner scn = new Scanner(System.in);
     do {
-      task();
-      System.out.println("Per uscire digita q");
-      quit = stop.nextLine();
+      System.out.println("Inserisci un nome in minuscolo");
+      String word = scn.nextLine();
+      task(word);
+      System.out.println("Per uscire scrivi quit"); /* digita q"); */
+      quit = scn.nextLine();
       //q = quit.charAt(0);
       if (/*q == 'q' ||*/ "quit".equals(quit)){
         break;
       }
     } while (true);
-    stop.close();
+    scn.close();
   }
 }

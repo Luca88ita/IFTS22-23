@@ -84,6 +84,11 @@ public class Es017 {
     System.out.println("Il numero minore dentro l'array è "+arrayMin(array));
     System.out.println("Verifica se l'array è ordinato in maniera crescente: "+isSortedIncr(array));
     arrayPrint(sortIncr(array));
-    arrayPrint(sortDecr(array));
+    arrayPrint(sortDecr(array)); // non funziona
   }
 }
+
+
+/*
+ * da sistemare l'ordinamento decrescente
+ */
