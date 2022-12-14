@@ -9,7 +9,7 @@ public class Es021Estrazioni {
    */
   public static void pressEnter(Scanner x){ 
     try{
-      System.in.read();
+      //System.in.read();
       x.nextLine();
     } catch(Exception e) {
     }  
@@ -62,7 +62,7 @@ public class Es021Estrazioni {
     return arr;
   }
   /**
-   * function which simply prints out the given array, and waits for the user input to proceed withthe next printout
+   * function which simply prints out the given array, and waits for the user input to proceed with the next printout
    * @param arr is the array the function receives to be printed
    */
   public static void arrayPrint (int[] arr){
@@ -76,6 +76,7 @@ public class Es021Estrazioni {
       else{
         System.out.println("Il "+(i+1)+"° ed ultimo numero estratto è "+arr[i]);
         System.out.println("Premi invio per tornare alla pagina principale");
+        pressEnter(entScanner);
       }
     }
   }
@@ -107,19 +108,15 @@ public class Es021Estrazioni {
       switch (selection) {
         case '1':
           arrayPrint(drawing(7));
-          pressEnter(scn);
           break;
         case '2':
           arrayPrint(drawing(5));
-          pressEnter(scn);
           break;    
         case '3':
           arrayPrint(drawing(10));
-          pressEnter(scn);
           break; 
         case '4':
           arrayPrint(drawing(90));
-          pressEnter(scn);
           break;
         case 'q':
           break;      

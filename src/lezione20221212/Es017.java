@@ -57,9 +57,9 @@ public class Es017 {
     return arr;
   }
   public static int[] sortDecr(int[]arr){
-    for (int i = arr.length; i > 0; i++) {
-      for (int j = arr.length-1; j > i-1; j++) {
-        if (arr[i]>arr[j]){
+    for (int i = 0; i < arr.length-1; i++) {
+      for (int j = i+1; j < arr.length; j++) {
+        if (arr[i]<arr[j]){
           int tmp = arr[i];
           arr[i]=arr[j];
           arr[j]=tmp;
@@ -82,13 +82,14 @@ public class Es017 {
     System.out.printf("La media dei valori dell'array è %.2f \n", arrayMedia(array));
     System.out.println("Il numero maggiore dentro l'array è "+arrayMax(array));
     System.out.println("Il numero minore dentro l'array è "+arrayMin(array));
-    System.out.println("Verifica se l'array è ordinato in maniera crescente: "+isSortedIncr(array));
+    if (isSortedIncr(array)==true){
+      System.out.println("L'array è ordinato in maniera crescente");
+    }else{
+      System.out.println("L'array è ordinato in maniera decrescente");
+    }
+    System.out.println("L'array ordinato in modalità crescente è: ");
     arrayPrint(sortIncr(array));
+    System.out.println("L'array ordinato in modalità decrescente è: ");
     arrayPrint(sortDecr(array)); // non funziona
   }
 }
-
-
-/*
- * da sistemare l'ordinamento decrescente
- */
