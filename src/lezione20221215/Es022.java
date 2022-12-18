@@ -34,7 +34,11 @@ public class Es022 {
   }
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in);
+    Scanner scn2 = new Scanner(System.in);
+    String quit;
+    char quitchar = 's';
     do {
+      //Scanner scn = new Scanner(System.in);
       System.out.println("Inserisci il numero da ricercare");
       int x = scn.nextInt();
       if (isPrime(x) == true){
@@ -44,11 +48,20 @@ public class Es022 {
       }
       System.out.println("Tutti i numeri primi da 1 a "+x+" sono");
       allPrime(x);
-      allPrime(x);
       System.out.println("*******************************");
       System.out.println("I numeri primi gemelli fino a "+x+" sono "+countSpecialCouples(x,2));
       System.out.println("I numeri primi cugini fino a "+x+" sono "+countSpecialCouples(x,4));
       System.out.println("I numeri primi sexy fino a "+x+" sono "+countSpecialCouples(x,6));
-    } while (true);
+      System.out.println("*******************************");
+      System.out.println("Digita q e premi invio per uscire o invio per continuare");
+      quit = scn2.nextLine();
+      if (quit.equals("")) {
+        quitchar = 'y';
+      }else{
+        quitchar = quit.charAt(0);
+      }
+    } while (quitchar !='q');
+    scn.close();
+    scn2.close();
   }
 }
