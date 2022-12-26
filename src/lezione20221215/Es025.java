@@ -1,52 +1,43 @@
 package lezione20221215;
 
-import java.sql.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 //funzione che stampi a monitor tutte le cifre di quel numero
 public class Es025 {
-  public static int baseDieci(int n){
-    int m = n;
-    int i;
-    System.out.println(m+" è composto da");
-    for (i = 0; m > 0; i++) {
-      System.out.println(m%10+" x 10 ^"+i);
-      m /= 10;
+  public static int[] digits(int n) {
+    List<Integer> l = new ArrayList<>();
+    while (n > 0) {
+      l.add(n % 10);
+      n /= 10;
     }
-    return i;
+    return toIntArray(l);
   }
-  public static int dimensioneArray(int n){
-    int m = n;
-    int i;
-    for (i = 0; m > 0; i++) {
-      System.out.println(m%10+" x 10 ^"+i);
-      m /= 10;
-    }
-    return i;
+
+  public static int[] toIntArray(List<Integer> list) {
+    int[] ret = new int[list.size()];
+    for (int i = 0; i < ret.length; i++)
+      ret[i] = list.get(i);
+    return ret;
   }
-  public static int[] createNewArray (int n){
-    int[] array = new int[n];
-    return array;
-  }
-  public static boolean isArmstrongNumber(int n){
-    int m = n;
+
+  public static int powerSum(int[] digits, int exp) {
     int sum = 0;
-    //System.out.print(" la somma dei cubi delle cifre di "+m+" è ");
-    for (int i = 0; m > 0; i++) {
-      //System.out.println(m%10+" x 10 ^"+i);
-      m /= 10;
-      sum = sum + (int) Math.pow((m%10),3);
+    for (int digit : digits) {
+      sum += Math.pow(digit, exp);
     }
-    if (sum == n){
-      System.out.println(n+" è un numero di Armstrong");
-      return true;
-    }
-    return false;
+    return sum;
   }
+
+  public static boolean isArmstrongNumber(int n) {
+    return (powerSum(digits(n), 3) == n);
+  }
+
   public static void main(String[] args) {
-    //baseDieci(1531);
     for (int i = 1; i < 1000; i++) {
-      isArmstrongNumber(i);
+      if (isArmstrongNumber(i)) {
+        System.out.println(i);
+      }
     }
   }
 }

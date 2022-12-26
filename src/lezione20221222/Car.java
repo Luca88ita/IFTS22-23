@@ -1,6 +1,6 @@
 package lezione20221222;
 
-import java.util.List;
+//import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -44,10 +44,11 @@ public class Car {
 
 
   /**
-   * Questo è il costruttore della classe Car, che richiede 3 variabili
+   * Questo è il costruttore della classe Car, che richiede 4 variabili
    * @param brand
    * @param model
    * @param cc
+   * @param plateNumber
    */
   public Car(String brand, String model, Double cc, String plateNumber) {
     this.brand = brand;
