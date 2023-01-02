@@ -1,139 +1,60 @@
 package home;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-
+import java.io.*;
 
 public class Home007 {
-  public static void pressEnterToContinue(Scanner x){ 
-    System.out.println("Premi invio per continuare...");
-    try{
-      System.in.read();
-      x.nextLine();
-    } catch(Exception e) {
-    }  
+  public static void createNewFile() {
+    
   }
-/*************************************************/
-  public static void createNewTxt(Scanner x) {
-    try {
-      System.out.println("Inserisci il nome del nuovo file .txt da creare (non scrivere l'estensione)");
-      String fileName = x.nextLine();
-      File myObj = new File("./src/home/"+fileName+".txt");
-      if (myObj.createNewFile()) {
-        System.out.println("Creato il file: " + myObj.getName());
-      } else {
-        System.out.println("Impossibile sovrescrivere. File già esistente.");
-      }
+
+  /******************************/
+  public static void verifyFileExistance(String fileName) {
+    File myFile = new File(fileName);
+		if (myFile.exists()) {
+			System.out.println(myFile.getName() + " esiste");
+			System.out.println("Il file ha dimensione " + myFile.length() + " bytes");
+			if (myFile.canRead())
+				System.out.println(" è leggibile");
+			else
+				System.out.println(" è illeggibile o corrotto");
+			if (myFile.canWrite())
+				System.out.println(" è scrivibile");
+			else
+				System.out.println(" è di sola lettura");
+			System.out.println("L'indirizzo del documento è: " +myFile.getAbsolutePath());
+			System.out.println("Nome del file: "+ myFile.getName());
+			System.out.println("Dimensione del file: "+ myFile.length() + " bytes");
+      openExistingFile(fileName);
+      writeFile(fileName);
+		} else
+			System.out.println("Il file non esiste");
+  }
+  /******************************/
+  public static void openExistingFile(String fileName) {
+    File file = new File(fileName);
+    try (FileInputStream fis = new FileInputStream(file)) {
+        int content;
+      while ((content = fis.read()) != -1) {
+        // convert to char and display it
+        System.out.print((char) content);
+      } 
     } catch (IOException e) {
-      System.out.println("Errore durante la creazione del file!");
       e.printStackTrace();
     }
   }
-/*************************************************/
-public static void overrideTxt(Scanner x){
-  try {
-    System.out.println("Inserisci il nome del file .txt da modificare (non scrivere l'estensione)");
-    String fileName = x.nextLine();
-    FileWriter myWriter = new FileWriter("./src/home/"+fileName+".txt");
-    System.out.println("Inserisci il testo da inserire nel documento");
-    String fileModString = x.nextLine();
-    myWriter.write(fileModString);
-    myWriter.close();
-    System.out.println("Stringa aggiunta correttamente al file");
-  } catch (IOException e) {
-    System.out.println("Errore durante la scrittura del file!");
-    e.printStackTrace();
+  /********************************/
+  public static void writeFile(String fileName) {
+    String s = "Questo verrà scritto all'interno del file";
+		System.out.println(" ==> Sto scrivendo nel file '"+fileName+"'': '" + s+"'");
+		try (FileWriter outFile = new FileWriter(fileName);
+				BufferedWriter bWriter = new BufferedWriter(outFile)) {
+			bWriter.write(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}    
   }
-}
-  /*************************************************/
-  public static void modifyTxt(Scanner x){
-    try {
-      System.out.println("Inserisci il nome del file .txt da modificare (non scrivere l'estensione)");
-      String fileName = x.nextLine();
-      //String fileContent = openTxt(x);
-      FileWriter myWriter = new FileWriter("./src/home/"+fileName+".txt");
-      System.out.println("Inserisci il testo da inserire nel documento");
-      String fileModString = x.nextLine();
-      myWriter.write(fileModString);
-      myWriter.close();
-      System.out.println("Stringa aggiunta correttamente al file");
-    } catch (IOException e) {
-      System.out.println("Errore durante la scrittura del file!");
-      e.printStackTrace();
-    }
-  }
-  /*************************************************/
-public static void openTxt(Scanner x){
-  try {
-    System.out.println("Inserisci il nome del file .txt da aprire (non scrivere l'estensione)");
-    String fileName = x.nextLine();
-    File myObj = new File("./src/home/"+fileName+".txt");
-    Scanner myReader = new Scanner(myObj);
-    while (myReader.hasNextLine()) {
-      String data = myReader.nextLine();
-      System.out.println(data);
-    }
-    myReader.close();
-  } catch (FileNotFoundException e) {
-    System.out.println("Errore durante l'apertura del file!");
-    e.printStackTrace();
-  }
-}
-/*************************************************/
-public static void deleteTxt(Scanner x){
-  System.out.println("Inserisci il nome del file .txt da eliminare (non scrivere l'estensione)");
-  String fileDel = x.nextLine();
-  File myObj = new File("./src/home/"+fileDel+".txt"); 
-  if (myObj.delete()) { 
-    System.out.println("Cancellato il file: " + myObj.getName());
-  } else {
-    System.out.println("Errore durante l'eliminazione del file!");
-  } 
-}
-/*************************************************/
   public static void main(String[] args) {
-    char selection;
-    Scanner scn = new Scanner(System.in);
-    do {
-      System.out.println("""
-
-      
-        Seleziona:
-          1) per creare un nuovo documento txt
-          2) per sovrascrivere il contenuto di un documento txt
-          3) per leggere un documento txt
-          4) per cancellare un documento txt
-
-          q) se vuoi terminare il programma
-      """);
-      selection = scn.nextLine().charAt(0);
-      switch (selection) {
-        case '1':
-          createNewTxt(scn);
-          pressEnterToContinue(scn);
-          break;
-        case '2':
-          overrideTxt(scn);
-          pressEnterToContinue(scn);
-          break;    
-        case '3':
-          openTxt(scn);
-          pressEnterToContinue(scn);
-          break; 
-        case '4':
-          deleteTxt(scn);
-          pressEnterToContinue(scn);
-          break;
-        case 'q':
-          break;      
-        default:
-        System.out.println("Hai inserito un comando non valido");
-          break;
-      }
-    } while (selection!='q');
-    scn.close();
+    String fileName = "D:/prova.txt";
+    verifyFileExistance(fileName);
   }
 }
