@@ -11,6 +11,7 @@ public class Home008bis {
         return false;
       }
       if (primes[i] >= tmp) {
+      //if (primes[i] >= Math.sqrt(n)) {
         return true;
       }
     }
@@ -45,12 +46,13 @@ public class Home008bis {
   public static int[] primeNumbersSearch2(int n) {
     int[] s1 = new int[n];
     s1[0]=2;
-    int test = 2;
+    int test = 3;
     for (int i = 1; i < n; test++) {
       if (isPrime(test, s1)) {
         s1[i] = test;
         i++;
       }
+      test++;
     }
     return s1;
   }
@@ -82,7 +84,7 @@ public class Home008bis {
       //System.out.println("Il "+input+"° numero primo è "+primeNumbersSearch2(input)[input-1]);
       //int out=(primeNumbersSearch2(input)[input-1]);
       int out=(primeNumbersSearch2(input)[input-1]);
-      System.out.printf("Il %d° numero primo è %,d %n", input, out);
+      System.out.printf("Il %,d° numero primo è %,d %n", input, out);
       long stop = System.nanoTime();
       System.out.println("Il calcolo ha impiegato " + (stop - start) / 1000000 + " ms");
     } catch (Exception e) {
@@ -93,5 +95,8 @@ public class Home008bis {
 
 
 /*
- * fai un programma che in base al numero inserito ti dica se è un numero primo o meno // eventualmente la sua posizione
+ * fare un algoritmo per dirmi se numero è primo
+ * per farlo bisogna che mi salvo una lista con i numeri primi trovati a partire da 2
+ * il limite massimo della ricerca prima di essere sicuro che ho trovato un numero primo, è sqrt(numero ricercato).
+ * la ricerca stessa può essere limitata ai numeri dispari che non terminano con 5
  */

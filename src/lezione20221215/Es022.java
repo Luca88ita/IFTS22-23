@@ -1,5 +1,6 @@
 package lezione20221215;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Es022 {
@@ -20,7 +21,8 @@ public class Es022 {
       result[0] = 1;
       return result;
     }
-    for (long i = 2; i <= n/i; i++) {
+    //for (long i = 2; i <= n/i; i++) {
+    for (long i = 2; i <= Math.sqrt(n); i++) {
       if (n%i == 0){
         result[0]=1;
         result[1]=i;
@@ -29,6 +31,10 @@ public class Es022 {
     }
     return result;
   }
+public static boolean isPrime3(BigInteger n){
+  return n.isProbablePrime(2147483647);
+}
+
   public static long allPrime(long n){
     long counter = 0;
     for (long i = 2; i <= n; i++) {
@@ -59,24 +65,34 @@ public class Es022 {
     do {
       //Scanner scn = new Scanner(System.in);
       System.out.println("Inserisci il numero da ricercare");
-      long x = scn.nextLong();
-      long start = System.nanoTime();
-/*       if (isPrime(x)){
-        //System.out.println("Il numero ricercato è il "+allPrime(x)+"° numero primo");
-        System.out.println("Il numero ricercato è un numero primo");
-      } else {
-        System.out.println("Il numero ricercato non è primo");
-      } */
-      result = isPrime2(x);
-      if (result[0]==0){
-        System.out.println("Il numero ricercato è un numero primo");
-      } else {
-        if (x<2) {
-          System.out.println("Il numero ricercato è inferiore a 2, quindi non può essere primo");
+      long start;
+      /*tra parentesi le parti di codice da commentare/decommentare in caso si volessero fare delle prove */
+      {
+        long x = scn.nextLong();
+        start = System.nanoTime();
+        result = isPrime2(x);
+        if (result[0]==0){
+          System.out.println("Il numero ricercato è un numero primo");
         } else {
-          System.out.println("Il numero ricercato non è primo, perché è divisibile per "+result[1]);
+          if (x<2) {
+            System.out.println("Il numero ricercato è inferiore a 2, quindi non può essere primo");
+          } else {
+            System.out.println("Il numero ricercato non è primo, perché è divisibile per "+result[1]);
+          }
         }
       }
+      /*{
+        BigInteger x = scn.nextBigInteger();
+        start = System.nanoTime();
+        if (isPrime3(x)){
+          //System.out.println("Il numero ricercato è il "+allPrime(x)+"° numero primo");
+          System.out.println("Il numero ricercato è un numero primo");
+        } else {
+          System.out.println("Il numero ricercato non è primo");
+        } 
+        long stop = System.nanoTime();
+        System.out.println("Il calcolo ha impiegato " + (stop - start) / 1000000 + " ms");
+      }*/
       long stop = System.nanoTime();
       System.out.println("Il calcolo ha impiegato " + (stop - start) / 1000000 + " ms");
       //System.out.println("Tutti i numeri primi da 1 a "+x+" sono");
@@ -98,3 +114,8 @@ public class Es022 {
     scn2.close();
   }
 }
+
+
+/*
+ * se la radice quadrata del numero cercato 
+ */

@@ -1,0 +1,378 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "mainClass": "gardening.App",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Launch Tools",
+      "request": "launch",
+      "mainClass": "gardening.tools.Tools",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home001",
+      "request": "launch",
+      "mainClass": "home.Home001",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home002",
+      "request": "launch",
+      "mainClass": "home.Home002",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home003",
+      "request": "launch",
+      "mainClass": "home.Home003",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home004",
+      "request": "launch",
+      "mainClass": "home.Home004",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home005",
+      "request": "launch",
+      "mainClass": "home.Home005",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home006",
+      "request": "launch",
+      "mainClass": "home.Home006",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home007",
+      "request": "launch",
+      "mainClass": "home.Home007",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home007TextEditor",
+      "request": "launch",
+      "mainClass": "home.Home007TextEditor",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home008PrimeNumbers",
+      "request": "launch",
+      "mainClass": "home.Home008PrimeNumbers",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Home008bis",
+      "request": "launch",
+      "mainClass": "home.Home008bis",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es001",
+      "request": "launch",
+      "mainClass": "lezione20221201.Es001",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es002",
+      "request": "launch",
+      "mainClass": "lezione20221201.Es002",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "lezione20221201.Main",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es003",
+      "request": "launch",
+      "mainClass": "lezione20221205.Es003",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es004",
+      "request": "launch",
+      "mainClass": "lezione20221205.Es004",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es005",
+      "request": "launch",
+      "mainClass": "lezione20221205.Es005",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es006",
+      "request": "launch",
+      "mainClass": "lezione20221205.Es006",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es007",
+      "request": "launch",
+      "mainClass": "lezione20221205.Es007",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es008",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es008",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es009",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es009",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es010",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es010",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es011",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es011",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es012",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es012",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es013",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es013",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es014",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es014",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es015",
+      "request": "launch",
+      "mainClass": "lezione20221207.Es015",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es016",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es016",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es017",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es017",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es018",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es018",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es019",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es019",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es020",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es020",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es021Estrazioni",
+      "request": "launch",
+      "mainClass": "lezione20221212.Es021Estrazioni",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es022",
+      "request": "launch",
+      "mainClass": "lezione20221215.Es022",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es023",
+      "request": "launch",
+      "mainClass": "lezione20221215.Es023",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es024",
+      "request": "launch",
+      "mainClass": "lezione20221215.Es024",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es025",
+      "request": "launch",
+      "mainClass": "lezione20221215.Es025",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es026",
+      "request": "launch",
+      "mainClass": "lezione20221215.Es026",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es027",
+      "request": "launch",
+      "mainClass": "lezione20221219.Es027",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es028",
+      "request": "launch",
+      "mainClass": "lezione20221219.Es028",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es029",
+      "request": "launch",
+      "mainClass": "lezione20221219.Es029",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Applicazione",
+      "request": "launch",
+      "mainClass": "lezione20221222.Applicazione",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Applicazione2",
+      "request": "launch",
+      "mainClass": "lezione20221222.Applicazione2",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es030",
+      "request": "launch",
+      "mainClass": "lezione20221222.Es030",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es031",
+      "request": "launch",
+      "mainClass": "lezione20221222.Es031",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es032",
+      "request": "launch",
+      "mainClass": "lezione20221222.Es032",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es001(1)",
+      "request": "launch",
+      "mainClass": "verifica20221219.Es001",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es002(1)",
+      "request": "launch",
+      "mainClass": "verifica20221219.Es002",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es003(1)",
+      "request": "launch",
+      "mainClass": "verifica20221219.Es003",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es004(1)",
+      "request": "launch",
+      "mainClass": "verifica20221219.Es004",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es005(1)",
+      "request": "launch",
+      "mainClass": "verifica20221219.Es005",
+      "projectName": "IFTS22-23_e45d5e6f"
+    }
+  ]
+}
