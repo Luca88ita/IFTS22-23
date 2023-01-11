@@ -8,6 +8,12 @@ public class Tool {
   String toolDescription;
   String toolPurchaseDate;
 
+  public Tool() {
+    this.toolName = "";
+    this.toolPrice = 0;
+    this.toolDescription = "";
+    this.toolPurchaseDate = "";
+  }
   public Tool(String toolName, double toolPrice, String toolDescription, String toolPurchaseDate) {
     this.toolName = toolName;
     this.toolPrice = toolPrice;
@@ -38,6 +44,14 @@ public class Tool {
   }
   public void setToolPurchaseDate(String toolPurchaseDate) {
     this.toolPurchaseDate = toolPurchaseDate;
+  }
+
+  public Tool set(String toolName, double toolPrice, String toolDescription, String toolPurchaseDate){
+    this.toolName = toolName;
+    this.toolPrice = toolPrice;
+    this.toolDescription = toolDescription;
+    this.toolPurchaseDate = toolPurchaseDate;
+    return this;
   }
 
   public String toString(){
