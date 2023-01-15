@@ -8,6 +8,13 @@
       "type": "java",
       "name": "Launch App",
       "request": "launch",
+      "mainClass": "lezione20230112.geometry.App",
+      "projectName": "IFTS22-23_844293d1"
+    },
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
       "mainClass": "gardening.App",
       "projectName": "IFTS22-23_e45d5e6f"
     },

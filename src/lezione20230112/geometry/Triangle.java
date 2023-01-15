@@ -1,30 +1,93 @@
 package lezione20230112.geometry;
 
-public class Triangle {
+import java.util.Objects;
+
+public class Triangle implements Movable, Computable {
   Point a;
   Point b;
   Point c;
-}
 
-/*
- * Triangolo con angoli ABC
- * dato il punto A [x=0,y=0] nel caso il punto B, Bx < Ax, allora bisogna calcolare un punto fittizio D[BxAy] dal quale far partire il triangolo rettangolo
- *  questo a patto che Cx > Ax....
- * 
- * Triangolo potrebbe essere un'istanza o una clase astratta, mentre Triangolo equilatero, scaleno, isoscele, rettangolo potrebbero essere le classi reali
- *  rettangolo se Ax = Bx e Ay = Cy;
- * 
- *  se volessi fare una formulazione standard per la ricerca del triangolo, dovrei trovare una formula per calcolare un'altezza standard;
- *  in questo caso dovrei trovare il lato più lungo e costruire l'altezza sempre su quello.
- *  il problema con questo approccio, è che non so dove mi finirà il punto H[x,y] dal quale fare partire la misura dell'altezza verso l'angolo opposto al lato maggiore.
- *  in questo caso si potrebbe utilizzare una funzione per trovare la sola retta perpendicolare al lato più lungo che si va ad incrociare con quell'angolo.
- *  una volta trovata quella retta, basta vedere in che punto si incrocia con la retta del lato più lungo, ed abbiamo così trovato il nostro punto H[x,y];
- *  la formula per disegnare una retta è y=ax+n (dove se n > 0, la retta si sposta indietro sull'asse x)
- *                                              (dove se a>0 la retta è crescente, se a=0 è parallela all'asse x, se a<0 la retta è decrescente)
- *  la retta perpendicolare deve conseguentemente avere come formula y=-1/ax+m;
- *                                              m prende al punto y=Py il valore di
- *                                              se m=Px e y = Py allora bisogna verificare il valore di m quando y=0;
- *  una volta trovato anche il valore di m, trovare l'intersezione tra le 2 rette in modo da trovare il punto H 
- * 
- *  
- */
+  public Triangle(Point a, Point b, Point c){
+    this.a = a;
+    this.b = b;
+    this.c = c;
+  }
+  public Triangle(){
+    this.a = new Point(0,0);
+    this.b = new Point(0,0);
+    this.c = new Point(0,0);
+  }
+  public Point getA(){
+    return a;
+  }
+  public Point getB(){
+  return b;
+  }
+  public Point getC(){
+  return c;
+  }
+  public void set(Point a,Point b,Point c){
+    this.a = a;
+    this.b = b;
+    this.c = c;
+  }
+  public void setA(Point a){
+    this.a = a;
+  }
+  public void setB(Point b){
+  this.b = b;
+  }
+  public void setC(Point c){
+  this.c = c;
+  }
+  @Override
+  public boolean equals(Object o){
+    if (this == o) return true;
+    if (o== null || getClass() != o.getClass()) return false;
+    Triangle triangle = (Triangle) o;
+    return Objects.equals(a, triangle.a) && Objects.equals(b, triangle.b) && Objects.equals(c, triangle.c);
+  }
+  @Override
+  public int hashCode() {
+    return Objects.hash(a, b, c);
+  }
+  private double getSideLength(Point x, Point y){
+    /*sqrt(((Bx-Cx)^2)+((By-Cy)^2)) */
+    return Math.sqrt((Math.pow((y.getX()-x.getX()),2))+(Math.pow((y.getY()-x.getY()),2)));
+  }
+  @Override
+  public double getArea() {
+    double perimeter = getPerimeter();
+    double x = getSideLength(a, b);
+    double y = getSideLength(b, c);
+    double z = getSideLength(c, a);
+    double area = Math.sqrt((perimeter/2)*(perimeter/2-x)*(perimeter/2-y)*(perimeter/2-z));
+    return area;
+  }
+  @Override
+  public double getPerimeter() {
+    double x = getSideLength(a, b);
+    double y = getSideLength(b, c);
+    double z = getSideLength(c, a);
+    double perimeter = x+y+z;
+    return perimeter;
+  }
+  @Override
+  public void move(double x, double y) {
+    // TODO Auto-generated method stub
+    
+  }
+  @Override
+  public void translate(double x, double y) {
+    // TODO Auto-generated method stub
+    
+  }
+  @Override
+  public String toString() {
+    return "Triangle{" +
+            "Point A " + a +
+            ", Point B " + b +
+            ", Point C " + c +
+            '}';
+  }
+}

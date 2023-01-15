@@ -20,7 +20,8 @@ public class App {
     List<Computable> cc = new ArrayList<>();
     cc.add(c);
     cc.add(r);
-
+    Triangle t = new Triangle();
+    t.set(new Point(0,0), new Point(0,3), new Point(4,0));
 
     Movable m = r;
 
@@ -31,7 +32,9 @@ public class App {
       System.out.println("Downcast non possibile");
     }
 
-
+    System.out.println(t);
+    System.out.println("L'area del triangolo è di "+t.getArea()+" cm quadrati");
+    System.out.println("Il perimetro del triangolo è di "+t.getPerimeter()+" cm");
 
   }
 }
