@@ -74,13 +74,30 @@ public class Triangle implements Movable, Computable {
   }
   @Override
   public void move(double x, double y) {
-    // TODO Auto-generated method stub
-    
+    double diffX = x-a.getX();
+    double diffY = y-a.getY();
+    translate(diffX, diffY);
+  }
+  public void moveA(double x, double y) {
+    double diffX = x-a.getX();
+    double diffY = y-a.getY();
+    translate(diffX, diffY);
+  }
+  public void moveB(double x, double y) {
+    double diffX = x-b.getX();
+    double diffY = y-b.getY();
+    translate(diffX, diffY);
+  }
+  public void moveC(double x, double y) {
+    double diffX = x-c.getX();
+    double diffY = y-c.getY();
+    translate(diffX, diffY);
   }
   @Override
   public void translate(double x, double y) {
-    // TODO Auto-generated method stub
-    
+    this.a.translate(x, y);
+    this.b.translate(x, y);
+    this.c.translate(x, y);    
   }
   @Override
   public String toString() {

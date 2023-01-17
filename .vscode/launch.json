@@ -6,6 +6,62 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch Es007a",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es007a",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es006",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es006",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es003",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es003",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es002",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es002",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es001c",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es001c",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es001b",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es001b",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch Es001",
+      "request": "launch",
+      "mainClass": "javaChallengesBook.Es001",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "mainClass": "lezione20230112.geometry.App",
+      "projectName": "IFTS22-23_e45d5e6f"
+    },
+    {
+      "type": "java",
       "name": "Launch App",
       "request": "launch",
       "mainClass": "lezione20230112.geometry.App",
