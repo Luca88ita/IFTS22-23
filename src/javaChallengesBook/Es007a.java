@@ -46,7 +46,7 @@ public class Es007a {
     return 0;
   }
   public static void main(String[] args) {
-    String romanNumber = "MCMXCII";
+    String romanNumber = "CIAO";
     System.out.println(fromRomanNumber(romanNumber));
   } 
 }

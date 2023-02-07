@@ -8,9 +8,25 @@ public class Es001a {
     int result = ((m*n)/2)%7;
     return result;
   }
-  public static void main(String[] args) {;
+  /*public static void main(String[] args) {
     int m = 5;
     int n = 5;
     System.out.println(calc(m,n));
-  }
+  }*/
+
+    public static void main(String[] args) {
+      int m = 6;
+      int n = 7;
+      int result = ((m*n)/2)%7;
+
+      System.out.println(result);
+      System.out.printf("Il risultato è %d",result);
+      System.out.println("***************");
+      System.out.println(calc(m,n));
+    }
+
+
+  /*static int calc(int m, int n){
+    return ((m*n)/2)%7;
+  }*/
 }
