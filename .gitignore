@@ -24,3 +24,7 @@ hs_err_pid*
 
 #diagrammi di flusso
 /diagrams/
+
+#cartelle degli editor
+/.idea/
+/.vscode/
