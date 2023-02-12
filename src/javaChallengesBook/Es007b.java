@@ -6,9 +6,6 @@ import java.util.Objects;
 
 public class Es007b {
 
-  static List<RomanNumber> romanList = new ArrayList<>();
-  static String output = "";
-
   public static String arabToRoman(int remains, int counter){
     if (remains == 1) {
       if (counter == 0) return "I";
@@ -60,6 +57,9 @@ public class Es007b {
     }
     return "";
   }
+
+  static List<RomanNumber> romanList = new ArrayList<>();
+  static String output = "";
 
   private static void basicRomanNumberListInitialization(){
     if(romanList.size()==0){

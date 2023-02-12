@@ -59,6 +59,5 @@ public class RomanNumber {
                 ", potenzaDieci=" + potenzaDieci +
                 ", letteraRomana='" + letteraRomana + '\'' +
                 '}';
-        //return letteraRomana;
     }
 }

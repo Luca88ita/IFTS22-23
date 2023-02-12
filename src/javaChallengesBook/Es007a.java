@@ -112,9 +112,30 @@ public class Es007a {
   }
 
   public static boolean validityCheck2(String s){
-    int test = fromRomanNumber(s);
+    int test = returnArab(s);
     if (s.equals(Es007b.returnRoman(test))) return true;
     return false;
+  }
+
+  public static int returnArab(String s){
+    int sum = 0;
+    char c, c2;
+    for (RomanNumber rn:romanList){
+      c = s.charAt(s.length()-1);
+      if (c == rn.getLetteraRomana()) sum = (int) (rn.getValoreAssoluto()*(Math.pow(10,rn.getPotenzaDieci())));
+    }
+    for (int i = 1; i < s.length(); i++) {
+      c = s.charAt(s.length()-i-1);
+      c2 = s.charAt(s.length()-i);
+      int tmp1=0;
+      int tmp2=0;
+      for (RomanNumber rn:romanList){
+        if (c == rn.getLetteraRomana()) tmp1 = (int) (rn.getValoreAssoluto()*(Math.pow(10,rn.getPotenzaDieci())));
+        if (c2 == rn.getLetteraRomana()) tmp2 = (int) (rn.getValoreAssoluto()*(Math.pow(10,rn.getPotenzaDieci())));
+      }
+      sum = (tmp1 < tmp2) ? sum - tmp1: sum + tmp1;
+    }
+    return sum;
   }
 
   public static int fromRomanNumber(String s) {
@@ -125,11 +146,7 @@ public class Es007a {
       c2 = s.charAt(s.length()-i);
       int tmp1 = romanToArab(c);
       int tmp2 = romanToArab(c2);
-      if (tmp1 < tmp2) {
-        sum = sum - tmp1;
-      }else{
-        sum = sum + tmp1;
-      }
+      sum = (tmp1 < tmp2) ? sum - tmp1: sum + tmp1;
     }
     return sum;
   }
@@ -218,7 +235,8 @@ public class Es007a {
     for (String romanNumber:test){
       i++;
       if(validityCheck2(romanNumber)){
-        System.out.println(i+"° - "+romanNumber+" = "+fromRomanNumber(romanNumber));
+        //System.out.println(i+"° - "+romanNumber+" = "+fromRomanNumber(romanNumber));
+        System.out.println(i+"° - "+romanNumber+" = "+returnArab(romanNumber));
       }
     }
   } 
