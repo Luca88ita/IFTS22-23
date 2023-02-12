@@ -1,6 +1,13 @@
 package javaChallengesBook;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class Es007b {
+
+  static List<RomanNumber> romanList = new ArrayList<>();
+  static String output = "";
 
   public static String arabToRoman(int remains, int counter){
     if (remains == 1) {
@@ -54,6 +61,89 @@ public class Es007b {
     return "";
   }
 
+  private static void basicRomanNumberListInitialization(){
+    if(romanList.size()==0){
+      romanList.add(new RomanNumber(1,0,'I'));
+      romanList.add(new RomanNumber(5,0,'V'));
+      romanList.add(new RomanNumber(1,1,'X'));
+      romanList.add(new RomanNumber(5,1,'L'));
+      romanList.add(new RomanNumber(1,2,'C'));
+      romanList.add(new RomanNumber(5,2,'D'));
+      romanList.add(new RomanNumber(1,3,'M'));
+    }
+  }
+  private static void getRoman(int n, int power){
+    basicRomanNumberListInitialization();
+    for (RomanNumber rn:romanList){
+      if (rn.getPotenzaDieci() == power && rn.getValoreAssoluto() == n){
+        output = rn.getLetteraRomana()+output;
+      }
+    }
+  }
+  private static String returnRoman2(int numero){
+    int control = numero;
+    if (control>3999 || control<=0) {
+      return "Inserisci un valore compreso tra 1 e 3999";
+    }
+    for (int i = 0; control > 0; i++) {
+      int temp = control%10;
+      switch (temp){
+        case 1:{
+          getRoman(1,i);
+          break;
+        }
+        case 2:{
+          for (int j = 0; j < 2; j++) {
+            getRoman(1,i);
+          }
+          break;
+        }
+        case 3:{
+          for (int j = 0; j < 3; j++) {
+            getRoman(1,i);
+          }
+          break;
+        }
+        case 4:{
+          getRoman(5,i);
+          getRoman(1,i);
+          break;
+        }
+        case 5:{
+          getRoman(5,i);
+          break;
+        }
+        case 6:{
+          getRoman(1,i);
+          getRoman(5,i);
+          break;
+        }
+        case 7:{
+          for (int j = 0; j < 2; j++) {
+            getRoman(1,i);
+          }
+          getRoman(5,i);
+          break;
+        }
+        case 8:{
+          for (int j = 0; j < 3; j++) {
+            getRoman(1,i);
+          }
+          getRoman(5,i);
+          break;
+        }
+        case 9:{
+          getRoman(1,i+1);
+          getRoman(1,i);
+          break;
+        }
+        default:
+      }
+      control = control/10;
+    }
+    return output;
+  }
+
   public static String returnRoman(int numero){
     String romano = "";
     int control = numero;
@@ -68,7 +158,8 @@ public class Es007b {
   }
 
   public static void main(String[] args) {
-    int test = 444;
+    int test = 1356;
     System.out.println(returnRoman(test));
+    System.out.println(returnRoman2(test));
   }
 }
