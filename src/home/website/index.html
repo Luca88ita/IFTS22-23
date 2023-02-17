@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,77 +11,121 @@
   <body>
     <header>
       <img class="logo" src="./assets/logo.jpg" alt="logo" />
-      <img class="banner" src="./assets/banner.jpeg" alt="banner" />
+      <img id="banner" src="./assets/banner.jpeg" alt="banner" />
       <h1>Associazione ci piacciono i gatti</h1>
     </header>
+
+    <aside>
+      <nav>
+        <ul>
+          <li><a href="" target="_self">Link1 interno</a></li>
+          <li><a href="" target="_self">Link2 interno</a></li>
+          <li><a href="" target="_self">Link3 interno</a></li>
+          <li><a href="" target="_self">Link4 interno</a></li>
+          <li><a href="" target="_blank">Link5 esterno</a></li>
+        </ul>
+      </nav>
+    </aside>
     <div id="content">
-      <aside>
-        <nav>
-          <ul>
-            <li><a href="" target="_self">Link1 interno</a></li>
-            <li><a href="" target="_self">Link2 interno</a></li>
-            <li><a href="" target="_self">Link3 interno</a></li>
-            <li><a href="" target="_blank">Link4 esterno</a></li>
-          </ul>
-        </nav>
-      </aside>
       <main>
-        <h2>Titolo sezione 1</h2>
-        <section>
-          <h3>Titolo paragrafo 1</h3>
-          <p>
-            <span>paragrafo 1:</span> Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ea quia, expedita aliquid nihil nam tenetur
-            dolorum sed? Corporis, nesciunt sint. Sequi aperiam nesciunt quod
-            labore, deleniti dolorum modi deserunt ratione?
-          </p>
-          <img class="card" src="" alt="immagine paragrafo 1" />
-          <h3>Titolo paragrafo 2</h3>
-          <p>
-            <span>paragrafo 2:</span> Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Et, quae minus numquam odio rerum quasi aliquam
-            nulla velit reprehenderit repellat delectus iusto veniam
-            consequuntur facilis vitae mollitia inventore dicta est.
-          </p>
-        </section>
+        <div id="section1">
+          <h2>Titolo sezione 1</h2>
+          <section>
+            <div id="par1">
+              <div>
+                <h3>Titolo paragrafo 1</h3>
+                <p>
+                  <span>paragrafo 1:</span> Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Ea quia, expedita aliquid nihil
+                  nam tenetur dolorum sed? Corporis, nesciunt sint. Sequi
+                  aperiam nesciunt quod labore, deleniti dolorum modi deserunt
+                  ratione?
+                </p>
+              </div>
+              <img
+                class="cardPic"
+                src="./assets/gatto1.jpeg"
+                alt="immagine paragrafo 1"
+              />
+            </div>
+            <div id="par2">
+              <h3>Titolo paragrafo 2</h3>
+              <p>
+                <span>paragrafo 2:</span> Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Et, quae minus numquam odio rerum quasi
+                aliquam nulla velit reprehenderit repellat delectus iusto veniam
+                consequuntur facilis vitae mollitia inventore dicta est.
+              </p>
+            </div>
+          </section>
+        </div>
         <h2>Titolo sezione 2</h2>
-        <section>
-          <h3>Titolo paragrafo 3</h3>
-          <p>
-            <img class="card" src="" alt="immagine paragrafo 3" />
-            paragrafo 3: Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Incidunt necessitatibus asperiores iusto. Corporis, animi
-            neque voluptatum voluptas suscipit explicabo nemo quos tempora
-            facere accusamus minima quaerat a nam iste expedita!
-          </p>
-          <h3>Titolo paragrafo 4</h3>
-          <p>
-            <img class="card" src="" alt="immagine paragrafo 4" />
-            paragrafo 4: Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Modi dolor praesentium, dolores eos reiciendis aut omnis
-            soluta explicabo ut magnam temporibus, nihil quasi inventore
-            officiis, nemo architecto qui in porro.
-          </p>
-          <h3>Titolo paragrafo 5</h3>
-          <p>
-            <img class="card" src="" alt="immagine paragrafo 5" />
-            paragrafo 5: Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Quam consequuntur voluptas repellendus repudiandae voluptatem
-            tempora laboriosam dicta enim veniam molestiae amet, qui nesciunt
-            commodi, eaque sequi possimus in iusto minus.
-          </p>
-          <h3>Titolo paragrafo 6</h3>
-          <p>
-            <img class="card" src="" alt="immagine paragrafo 6" />
-            paragrafo 6: Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Repudiandae dolore cumque reprehenderit blanditiis doloremque,
-            voluptate ratione distinctio. Odio ad ratione, harum repudiandae
-            ipsum, voluptate architecto, in cum aspernatur aut ullam.
-          </p>
+        <section id="section2">
+          <div>
+            <h3>Titolo paragrafo 3</h3>
+            <p>
+              <img
+                class="cardPic"
+                src="./assets/gatto2.jpeg"
+                alt="immagine paragrafo 3"
+              />
+              paragrafo 3: Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Incidunt necessitatibus asperiores iusto. Corporis, animi
+              neque voluptatum voluptas suscipit explicabo nemo quos tempora
+              facere accusamus minima quaerat a nam iste expedita!
+            </p>
+          </div>
+          <div>
+            <h3>Titolo paragrafo 4</h3>
+            <p>
+              <img
+                class="cardPic"
+                src="./assets/gatto3.jpeg"
+                alt="immagine paragrafo 4"
+              />
+              paragrafo 4: Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Modi dolor praesentium, dolores eos reiciendis aut omnis
+              soluta explicabo ut magnam temporibus, nihil quasi inventore
+              officiis, nemo architecto qui in porro.
+            </p>
+          </div>
+          <div>
+            <h3>Titolo paragrafo 5</h3>
+            <p>
+              <img
+                class="cardPic"
+                src="./assets/gatto4.jpeg"
+                alt="immagine paragrafo 5"
+              />
+              paragrafo 5: Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Quam consequuntur voluptas repellendus repudiandae
+              voluptatem tempora laboriosam dicta enim veniam molestiae amet,
+              qui nesciunt commodi, eaque sequi possimus in iusto minus.
+            </p>
+          </div>
+          <div>
+            <h3>Titolo paragrafo 6</h3>
+            <p>
+              <img
+                class="cardPic"
+                src="./assets/gatto5.jpeg"
+                alt="immagine paragrafo 6"
+              />
+              paragrafo 6: Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Repudiandae dolore cumque reprehenderit blanditiis
+              doloremque, voluptate ratione distinctio. Odio ad ratione, harum
+              repudiandae ipsum, voluptate architecto, in cum aspernatur aut
+              ullam.
+            </p>
+          </div>
         </section>
       </main>
-    </div>
 
-    <footer>Copyright</footer>
+      <footer>
+        Copyright
+        <a href="mailto:gatti@gatti.com">Scrivici</a>
+        <a href="tel:000000">Chiamaci</a>
+      </footer>
+    </div>
   </body>
 </html>
