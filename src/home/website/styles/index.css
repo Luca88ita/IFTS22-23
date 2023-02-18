@@ -1,82 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root{
-  --bannerHeight: 30vh;
+  --bannerHeight: 15rem;
+  --sideWidth: 15rem;
 }
-
 
 body{
   margin: 0;
   padding: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-family: cursive;
   font-family: 'Roboto', sans-serif;
 }
 
 header{
-  background-color: white;
-}
-
-main,
-aside,
-footer{
-  margin: 2rem 1rem;
-}
-
-#content{
-  padding: var(--bannerHeight) 0 0 0;
-  display: flex;
-  flex-direction: column;
-  margin-left: 12rem;
-}
-aside{
   position: fixed;
-  padding: var(--bannerHeight) 0 0 0;
+  z-index: 2000;
+  background-color: lightgray;
+  height: var(--bannerHeight);
 }
 
-h1{
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 5vw;
-  left: 15rem;
-  color: white;
-  font-weight: 700;
-  font-size: 3rem;
-}
-h2{
-  margin: 0;
-  padding: 0;
-}
-h3{
-  margin: 0;
-  padding: 0;
-}
-
-p{
-  margin: 0;
-  padding: 0;
-}
-
-.logo{
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  height: 10rem;
-  border-radius: 50%;
-  z-index: 1000;
-}
-#banner{
-  position: fixed;
+.banner {
+  position: relative;
   width: 100vw;
   height: var(--bannerHeight);
   object-fit:cover;
 }
 
-.cardPic{
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+.logo{
+  height: 10rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+h1{
+  position: absolute;
+  top: 3rem;
+  left: 15rem;
+  color: white;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.sidebar {
+  position: relative;
+  width: var(--sideWidth);
+  height: 100vh;
+  object-fit:cover;
+}
+
+aside{
+  position: fixed;
+  top: var(--bannerHeight);
+  bottom:0;
+  width: var(--sideWidth);
+  display: flex;
+  background-color: lightgray;
+}
+
+nav{
+  width: 100%;
+  padding: 5rem 0;
+  position: absolute;
 }
 
 ul{
@@ -85,20 +70,38 @@ ul{
 
 li{
   margin: 1rem 0;
-  width: 10rem;
+
 }
-li a{
+li button{
   border-radius: 6px;
-  background-color: blue;
-  color: white;
+  background-color: #ffa500;
+  color: black;
   text-decoration: none;
+  font-weight: 700;
   padding: 0.25rem 1rem;
   transition: 150ms;
+  border: none;
+  width: 80%;
+  text-align: center;
 }
-li a:hover{
-  background-color: aquamarine;
-  color: blue;
+li button:hover{
+  background-color: #fdc45b;
+  cursor: pointer;
 }
+
+#content{
+  padding: var(--bannerHeight) 0 0 var(--sideWidth);
+  display: flex;
+  flex-direction: column;
+  background-color: wheat;
+
+}
+
+main,
+footer{
+  margin: 2rem 1rem;
+}
+
 
 #section1{
   display: flex;
@@ -109,26 +112,84 @@ li a:hover{
   display: flex;
   flex-direction: column;
 }
-
 #par1{
+  border-radius: 1rem 1rem 0 1rem;
   display: flex;
+  background-color: lightcyan;
+}
+#par1 img{
+  border-radius: 0 1rem 0 1rem;
+}
+#par1 h3{
+  text-align: left;
+}
+#par1 div p :first-child{
+  font-style: italic;
+  font-weight: 500;
+}
+#par1 div p :nth-child(2){
+  text-decoration: underline;
+  color: crimson;
 }
 #par2{
+  width: 50%;
   text-align: right;
+  background-color: lightyellow;
+  align-self: flex-end;
+  border-radius: 0 0 1rem 1rem;
+}
+
+#par2 h3{
+  text-align: right;
+}
+#par2 p span{
+  font-weight: 500;
+  color: brown;
+}
+
+h2{
+  margin: 1rem;
+  padding: 0;
+}
+h3{
+  margin: 1rem;
+  padding: 0;
+  text-align: center;
+}
+
+p{
+  margin: 1rem 1rem;
+  padding: 0;
+}
+.card{
+  border: 0.25rem solid gray;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.cardPic{
+  width: 100%;
+  height: 100%;
+  min-width: 150px;
+  min-height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card span{
+  margin-top: 2rem;
+  font-weight: 500;
 }
 
 #section2{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 #section2 > div{
   background-color: aquamarine;
   margin: 1rem 0.5rem;
+  border-radius: 1rem;
 }
 footer{
   text-align: center;
-}
-
-#section2 img{
-  width: 100%;
 }
