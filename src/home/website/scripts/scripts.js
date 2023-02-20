@@ -36,6 +36,35 @@ function ready() {
     console.log(lettere)
     let parola2 = lettere.join("b")
     console.log(parola2)
+    /******************************/
+    let nuovaparola="elettrodomestico"
+    let counter = 0;
+    for (let index = 0; index < nuovaparola.length; index++) {
+        let temp = nuovaparola.charAt(index);
+        switch (temp) {
+        case "a":
+        case "e":
+        case "i":
+        case "o":
+        case "u":
+            counter++; break;
+        default:
+            break;
+        }
+        
+    }
+    /********************************/
+    console.log("le vocali in "+nuovaparola+" sono "+counter)
+    let counter2 = 0;
+    let vocali = ["a","e","i","o","u"]
+    for (let index = 0; index < nuovaparola.length; index++) {
+        if (vocali.includes(nuovaparola[index])) {
+            counter2++
+        }
+    }
+    console.log("le vocali in "+nuovaparola+" sono "+counter2)
+
+
 }
 
 function saluto() {
