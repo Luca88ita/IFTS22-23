@@ -5,9 +5,9 @@ function writeDiv() {
 }
 
 function sumNumbers() {
-    let n1 = parseInt(document.getElementById("i1").value);
-    let n2 = parseInt(document.getElementById("i2").value);
-    document.getElementById("d2").textContent = (n1 + n2);
+    let n1 = parseFloat(document.getElementById("i1").value);
+    let n2 = parseFloat(document.getElementById("i2").value);
+    document.getElementById("d2").textContent = (n1 + n2).toFixed(2);
     //document.getElementById("d2").innerHTML = "<b>" + (n1 + n2) + "</b>";
 }
 function controlFruit() {
