@@ -1,5 +1,5 @@
-let binArray = [];  // array where we are going to add all the binary numbers
-let nButtSec0 = 8;  // number of buttons in the section 1
+let binArray = []; // array where we are going to add all the binary numbers
+let nButtSec0 = 8; // number of buttons in the section 1
 let nButtSec1 = nButtSec0 / 4; // number of buttons in section 2
 
 /**
@@ -63,7 +63,6 @@ const zeroToOne = (idRoot, index) => {
   let value = document.getElementById(fullId).textContent;
   binArray[index] = value === "0" ? (value = 1) : (value = 0);
   document.getElementById(fullId).textContent = value;
-  console.log(binArray);
   esaConversion();
 };
 
