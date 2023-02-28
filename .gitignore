@@ -28,3 +28,6 @@ hs_err_pid*
 #cartelle degli editor
 /.idea/
 /.vscode/
+
+#cartella system commandline sentinel
+/=

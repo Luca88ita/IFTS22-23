@@ -1,5 +1,5 @@
 let binArray = [];
-let nButtSec0 = 16;
+let nButtSec0 = 8;
 let nButtSec1 = nButtSec0 / 4;
 
 /**
