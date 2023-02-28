@@ -1,46 +1,47 @@
-let wordArray = [];
-let word;
+let parolaArray = []
+let parolaCambiata = []
 
-/**
- * creates n buttons inside the given section selected by id with a given id root.
- * The param eLNeed is used to choose if adding or not the addEventListener to the
- * buttons
- * @param {String} sectionid
- * @param {int} n
- * @param {String} buttonid
- * @param {boolean} eLNeed
- */
-const createLetterButtons = (sectionid, n, buttonid, eLNeed) => {
-  let toBeCleared = document.getElementById(sectionid);
+function sposta () {
+  parolaCambiata=[];
+  let sez=document.getElementById("sec3");
+  sez.appendChild(this);
+  let figli = sez.childNodes;
+  for (valori of figli){
+    parolaCambiata.push(valori.textContent);
+    let counter = 0;
+    for (let i = 0; i < parolaCambiata.length; i++) {
+      if (parolaArray[i] != parolaCambiata[i]) {
+        counter++;
+      }
+    }
+    if (counter != 0) {
+      valori.style.backgroundColor = "blue";
+    }else{
+      valori.style.backgroundColor = "#ffa500";
+    }
+  }
+}
+
+function scrivi1 () {
+  let toBeCleared = document.getElementById("sec3");
+  parolaArray = [];
   toBeCleared.textContent = "";
-  for (let i = 0; i < n; i++) {
-    const button = document.createElement("button");
-    button.setAttribute("id", buttonid + i);
-    const textButton = document.createTextNode(wordArray[i]);
-    button.appendChild(textButton);
-    document.getElementById(sectionid).appendChild(button);
-    eLNeed === true
-      ? document.getElementById(buttonid + i).addEventListener("click", () => {
-          console.log("ciao bello");
-        })
-      : null;
+  let parola=document.getElementById("inp1").value;
+  
+  let sez=document.getElementById("sec3");
+  for(i=0; i<parola.length; i++) {
+    parolaArray.push(parola.charAt(i));
+    let elemento=document.createElement("button");
+    elemento.setAttribute("id", "lettera" + i);
+    elemento.textContent=parola.charAt(i);
+    elemento.addEventListener("click", sposta);
+    sez.appendChild(elemento);
   }
-};
 
-const splitWord = (word) => {
-  wordArray = [];
-  for (let i = 0; i < word.length; i++) {
-    wordArray.push(word.charAt(i));
-  }
-  createLetterButtons("sec3", wordArray.length, "letter", true);
-};
+  //controlla(sez.childNodes);//carico in memoria tutti i figli della sezione.
 
-// at input change, it changes word value
-document.getElementById("inp1").addEventListener("change", () => {
-  word = document.getElementById("inp1").value;
-});
 
-// at button click splits the word into wordArray
-document.getElementById("sendBut").addEventListener("click", () => {
-  splitWord(word);
-});
+  console.log(parolaCambiata);
+  console.log(parolaArray);
+}
+document.getElementById("sendBut").addEventListener("click",scrivi1)
