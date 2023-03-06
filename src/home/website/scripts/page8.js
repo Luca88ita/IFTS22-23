@@ -16,9 +16,6 @@ function lancio() {
     }
     ctrl++;
   }
-
-
-
 }
 
 
