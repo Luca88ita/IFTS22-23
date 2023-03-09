@@ -33,7 +33,7 @@ prec = null;
 succ = null;
 var url;
 function ready() {
-  let sezione = document.getElementById("memory");
+  let sezione = document.getElementById("memory"); //  sezione dove vado a costruire il campo di gioco
   for (let i = 0; i < 8; i++) {
     let elemento = document.createElement("div");
     sezione.appendChild(elemento);
@@ -49,42 +49,40 @@ function ready() {
     "./cards/camion.png",
     "./cards/elicottero.png",
   ];
-  clip2 = [...clip];
-  clip2.sort(() => Math.random() - 0.5);
+  clip2 = [...clip]; // serve per duplicare il contenuto di clip all'interno i clip2
+  clip2.sort(() => Math.random() -0.5); 
 
-  var i = 0;
+  let i = 0;
 
-  let elementi = document.getElementById("memory");
-  ele = elementi.getElementsByTagName("div");
+  cardsArray = sezione.getElementsByTagName("div");  // va a richiamare tutti i div che si trovano (o troveranno) all'interno della sezione "memory"
 
-  for (elementi of ele) {
-    elementi.id = "d" + i;
-    elementi.style.backgroundImage = "url('./cards/cover.png')";
-    elementi.addEventListener("click", mostra);
+  for (elements of cardsArray) {  // elements rappresenta tutti gli elementi che vado ad iterare all'interno dell'array // in questo caso tutte le carte all'interno del mazzo
+    elements.id = "card" + i;
+    elements.style.backgroundImage = "url('./cards/cover.png')";
+    elements.addEventListener("click", mostra);
     i++;
   }
 }
 
-function mostra(d) {
-  pos = this.id;
-  let punti = parseInt(document.getElementById("pun").textContent);
+function mostra() {
+  cardId = this.id;
+  let punti = parseInt(document.getElementById("punteggio").textContent);
   punti++;
-  document.getElementById("pun").textContent = punti;
-  console.log(pos.length);
-  let ind = pos.slice(1, pos.length);
-  this.style.backgroundImage = "url(" + clip2[ind] + ")";
+  document.getElementById("punteggio").textContent = punti;
 
-  console.log(precedente);
+  let cardIndex = cardId.slice(4, cardId.length);
+  this.style.backgroundImage = "url(" + clip2[cardIndex] + ")";
+
   if (precedente == false) {
     precedente = true;
     console.log("dop" + precedente);
-    url = "url(" + clip2[ind] + ")";
+    url = "url(" + clip2[cardIndex] + ")";
     prec = this;
   } else {
     precedente = false;
     succ = this;
-    console.log(url + "--" + "url(" + clip2[ind] + ")" + precedente);
-    if (url == "url(" + clip2[ind] + ")") {
+    console.log(url + "--" + "url(" + clip2[cardIndex] + ")" + precedente);
+    if (url == "url(" + clip2[cardIndex] + ")") {
       let intervalID = setTimeout(myCallback, 1000);
       function myCallback() {
         succ.style.display = "none";
