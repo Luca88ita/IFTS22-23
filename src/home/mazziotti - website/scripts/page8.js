@@ -1,6 +1,6 @@
 
 function lancio() {
-  dado = ["../assets/dado/uno.png", "../assets/dado/due.png", "../assets/dado/tre.png", "../assets/dado/quattro.png", "../assets/dado/cinque.png", "../assets/dado/sei.png"];
+  dado = ["./dado/uno.png", "./dado/due.png", "./dado/tre.png", "./dado/quattro.png", "./dado/cinque.png", "./dado/sei.png"];
 
   let ctrl = 0;
   let faccia = 0;
