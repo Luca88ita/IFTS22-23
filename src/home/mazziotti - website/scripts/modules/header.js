@@ -38,4 +38,5 @@ const Header = (bannerUrl, logoUrl, title) => {
   header.appendChild(h1);
 };
 
+// come ultima cosa devo andare ad esportare la classe Header, in modo che possa essere richiamata
 export default Header;
