@@ -108,7 +108,7 @@ footer{
   flex-direction: column;
 }
 
-#section1 section{
+#section1>div{
   display: flex;
   flex-direction: column;
 }
@@ -142,7 +142,7 @@ footer{
 #par2 h3{
   text-align: right;
 }
-#par2 p span{
+#par2 p span:first-of-type{
   font-weight: 500;
   color: brown;
 }
@@ -195,6 +195,9 @@ p{
 }
 footer{
   text-align: center;
+}
+footer>a{
+  margin: 0.5rem;
 }
 
 @media screen and (max-width: 1200px) {

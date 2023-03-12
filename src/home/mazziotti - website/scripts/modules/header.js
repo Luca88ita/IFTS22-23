@@ -1,18 +1,18 @@
 // vado a creare una funzione che ho deciso di chiamare Header (perché la utilizzerò per creare l'header e gli elementi al suo interno)
 // Per poter riutilizzare questa funzione, vado a dargli degli attributi, che sono:
+// parentId che è l'id del genitore dove verrà appeso l'elemento
 // bannerUrl che è l'indirizzo dell'immagine del banner
 // logoUrl che è l'indirizzo dell'immagine del logo
 // title che è il titolo che voglio dare al mio header
 //
 // quando si andrà a richiamare questa funzione, per farla lavorare correttamente, bisognerà fornirle tutti e 3 questi parametri
 
-const Header = (bannerUrl, logoUrl, title) => {
-  // vado a richiamare l'elemento root presente nella pagina html
-  let root = document.getElementById("root");
+const Header = (parentId, bannerUrl, logoUrl, title) => {
   // vado a creare l'elemento header...
   let header = document.createElement("header");
-  // ... e qui vado ad "appenderlo" all'elemento root richiamato in precedenza
-  root.appendChild(header);
+  header.id = "header";
+  // ... e qui vado ad "appenderlo" all'elemento padre, richiamato in precedenza negli attributi
+  parentId.appendChild(header);
 
   // qui vado invece a creare l'immagine del banner, con tutte le sue proprietà
   let banner = document.createElement("img");
