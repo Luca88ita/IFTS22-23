@@ -12,16 +12,26 @@ class Person extends Human {
     this.height = height;
   }
   printMyName() {
-    console.log(
-      "My name is " +
-        this.lastName +
-        " " +
-        this.firstName +
-        ", I'm " +
-        this.height +
-        " cm tall, and I'm " +
-        this.age
-    );
+    this.height != undefined && //this is an alternative way to write an if
+      console.log(
+        "My name is " +
+          this.lastName +
+          " " +
+          this.firstName +
+          ", I'm " +
+          this.height +
+          " cm tall, and I'm " +
+          this.age
+      );
+    this.height == undefined && //this is an alternative way to write an if
+      console.log(
+        "My name is " +
+          this.lastName +
+          " " +
+          this.firstName +
+          " and I'm " +
+          this.age
+      );
   }
 }
 
