@@ -1,5 +1,7 @@
+// importo due funzioni che sono all'interno di "main.js" che mi servirà utilizzare dopo
 import { defaultPage, showPage } from "./main.js";
 
+// creo un array di oggetti che conterrà i dati che dovranno essere visualizzati nel "Main"
 const catsDetails = [
   {
     id: 1,
@@ -59,22 +61,25 @@ const catsDetails = [
 ];
 
 const ButtonList = (parentId) => {
-  // con questo ciclo for...each vado a scorrere l'array di oggetti "links" e metto uno per uno gli oggetti ivi contenuti dentro la variabile temporanea "element"
+  // con questo ciclo for...each vado a scorrere l'array di oggetti "catsDetails" e metto uno per uno gli oggetti ivi contenuti dentro la variabile temporanea "element"
   catsDetails.forEach((element) => {
-    //vado a caricare la pagina di default che metto come elemento 0 dell'array
+    // vado a richiamare la funzione "defaultPage" (contenuta in "main.js" ed importata qui), al quale passo come argomento il primo oggetto dell'array "catsDetails". Questo serve per caricare i dati di default nel mio "Main"
     defaultPage(catsDetails[0]);
     // creo l'elemento "li", gli do un id univoco e lo appendo al genitore definito nellargomento parentId
     const li = document.createElement("li");
     li.id = "buttonList__li" + element.id;
     parentId.appendChild(li);
-    // creo un elemento "button" al quale do un testo e che appendo all'elemento "li"
+    // creo un elemento "button" al quale do un testo preso dal titolo dell'elemento che sto scorrendo, e che appendo all'elemento "li"
     const button = document.createElement("button");
     button.textContent = element.name;
     li.appendChild(button);
+    // creo un "EventListener" collegato al click del bottone appena creato. Essendo creato all'interno di un ciclo for, questo creerà tanti event listeners diversi quanti bottoni vado a creare
     button.addEventListener("click", () => {
+      // tramite una funzione freccia anonima vado a dire che cliccando il bottone, deve richiamarmi la funzione "showPage" (contenuta in "main.js" ed importata qui) alla quale passo come argomento l'elemento scorso nell'array
       showPage(element);
     });
   });
 };
 
+// esporto il tutto
 export default ButtonList;
