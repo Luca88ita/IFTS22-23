@@ -15,30 +15,30 @@ const innerContent = (content) => {
   title1.textContent = "In evidenza:";
   main.appendChild(title1);
   // richiamo la funzione "SectionOne" alla quale passo il genitore e l'oggetto con il contenuto da visualizzare
-  SectionOne(main, content);
+  SectionOne(main, content[0]);
   // creo un secondo titolo h2 che vado ad appendere al main e gli do un testo
   const title2 = document.createElement("h2");
   title2.textContent = "Altri aMici che ti attendono!!!";
   main.appendChild(title2);
   // richiamo la funzione "SectionTwo" alla quale passo il genitore e l'oggetto con il contenuto da visualizzare
-  SectionTwo(main);
+  SectionTwo(main, content[1]);
 };
 
 // creo una funzione esportabile che riceve come argomento un oggetto con i dati per caricare successivamente una pagina di default. Questa deve essere caricata SOLO alla prima apertura della pagina, cosa che verifico tramite l'if
-export const defaultPage = (defaultPage) => {
+export function defaultPage(defaultSection1, defaultSection2) {
   if (currentShown == null) {
-    currentShown = defaultPage;
+    currentShown = [defaultSection1, defaultSection2];
     //richiamo la funzione innerContent alla quale passo l'oggetto con i dati da visualizzare
     innerContent(currentShown);
   }
-};
+}
 
 // creo una funzione esportabile che riceve come argomento un oggetto con i nuovi dati da caricare nel main
-export const showPage = (pageToShow) => {
+export const showPage = (section1ToShow, section2ToShow) => {
   // memorizzo l'ultima pagina visualizzata (per adesso inutle, ma se volessi implementare uno storico, tornerebbe utile)
   lastShown = currentShown;
   // inizializzo i dati da visualizzare
-  currentShown = pageToShow;
+  currentShown = [section1ToShow, section2ToShow];
   // con questo ciclo elimino i dati precedenti presenti nel main, eliminando tutti i figli di main.
   while (main.firstChild) {
     main.removeChild(main.firstChild);

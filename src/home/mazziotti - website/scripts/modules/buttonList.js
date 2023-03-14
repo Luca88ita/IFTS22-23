@@ -60,11 +60,28 @@ const catsDetails = [
   },
 ];
 
+// creo una funzione che mi ritorni un array con gli oggetti diversi da quello presente nell'indice che andiamo a fornire come argomento
+const updatedSectionTwoElements = (elementIndex) => {
+  // qui vado a re-inizializzare la copia dell'array con tutti i dati
+  const remainingElements = [...catsDetails];
+  // e qui lo vado ad eliminare dall'array appena creato in modo che io possa passare alla funzione showPage gli argomenti di ciò che dovrà caricare nella sezione 1 e nella sezione 2 (per non ripetere nella sezione 2 l'elemento già visualizzato in sezione 1)
+  remainingElements.splice(elementIndex, 1);
+  // equi ritorno l'array di ogetti epurato dall'elemento selezionato con l'indice
+  return remainingElements;
+};
+
 const ButtonList = (parentId) => {
+  // qui vado ad inizializzare una copia dell'array con tutti i dati
+  let elementsLeft = [...catsDetails];
+  // qui indico l'indice all'interno dell'array dell'elemento che verrà visualizzato nella prima sezione
+  let index = 0;
+  // e qui lo vado ad eliminare dall'array appena creato...
+  elementsLeft.splice(index, 1);
+  // in modo che quando vado a richiamare la funzione "defaultPage" (contenuta in "main.js" ed importata qui), alla quale passo come argomenti il primo oggetto dell'array "catsDetails", e l'array con gli oggetti rimanenti, mi carichi i dati di default nel mio "Main"
+  defaultPage(catsDetails[index], elementsLeft);
+
   // con questo ciclo for...each vado a scorrere l'array di oggetti "catsDetails" e metto uno per uno gli oggetti ivi contenuti dentro la variabile temporanea "element"
   catsDetails.forEach((element) => {
-    // vado a richiamare la funzione "defaultPage" (contenuta in "main.js" ed importata qui), al quale passo come argomento il primo oggetto dell'array "catsDetails". Questo serve per caricare i dati di default nel mio "Main"
-    defaultPage(catsDetails[0]);
     // creo l'elemento "li", gli do un id univoco e lo appendo al genitore definito nellargomento parentId
     const li = document.createElement("li");
     li.id = "buttonList__li" + element.id;
@@ -75,8 +92,10 @@ const ButtonList = (parentId) => {
     li.appendChild(button);
     // creo un "EventListener" collegato al click del bottone appena creato. Essendo creato all'interno di un ciclo for, questo creerà tanti event listeners diversi quanti bottoni vado a creare
     button.addEventListener("click", () => {
-      // tramite una funzione freccia anonima vado a dire che cliccando il bottone, deve richiamarmi la funzione "showPage" (contenuta in "main.js" ed importata qui) alla quale passo come argomento l'elemento scorso nell'array
-      showPage(element);
+      // qui cerco l'indice all'interno dell'array dell'elemento che verrà visualizzato nella prima sezione
+      index = catsDetails.indexOf(element);
+      // tramite una funzione freccia anonima vado a dire che cliccando il bottone, deve richiamarmi la funzione "showPage" (contenuta in "main.js" ed importata qui) alla quale passo come argomenti argomenti l'oggetto selezionato dell'array "catsDetails", e l'array con gli oggetti rimanenti diversi dall'elemento selezionato
+      showPage(element, updatedSectionTwoElements(index));
     });
   });
 };
