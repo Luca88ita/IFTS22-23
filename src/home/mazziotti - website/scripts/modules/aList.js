@@ -1,6 +1,6 @@
 // creo un array di oggetti dove vado a scrivere le proprietà che mi serviranno per gli elementi li
 const links = [
-  {
+  /*{
     href: "../mazziotti - website/index2.html",
     target: "_self",
     title: "Aperol",
@@ -29,7 +29,7 @@ const links = [
     target: "_self",
     title: "Barilotto",
     key: 4,
-  },
+  },*/
   {
     href: "../mazziotti - website/pages/page6.html",
     target: "_self",

@@ -1,4 +1,5 @@
 import AList from "./aList.js";
+import ButtonList from "./buttonList.js";
 
 const Aside = (parentId, sideImg) => {
   const aside = document.createElement("aside");
@@ -16,6 +17,7 @@ const Aside = (parentId, sideImg) => {
   const ul = document.createElement("ul");
   ul.id = "navUl";
   nav.appendChild(ul);
+  ButtonList(ul);
   AList(ul);
 };
 
