@@ -20,22 +20,54 @@ const lastPossibleId =
   Math.pow(boardDimension, 2) - Math.pow(boardDimension - 2, 2) - 1;
 // e qui ri-assegno lo stesso valore al contatore inverso che mi servirà dopo come modificabile
 let idReverseCounter = lastPossibleId;
-// inizializzo le variabili che mi vanno a segnare la posizione del mio giocatore 1
-// ... Ricordo che le 2 variabili qui sotto equivalgono all'id per come ho impostato
-// il programma
-let previousPointPlayer1 = 0;
-let currentPointPlayer1 = 0;
+// inizializzo la variabile che mi va a segnare la posizione del mio giocatore 1
+// ... Ricordo che equivale all'id per come ho impostato il programma
+let playerOnePosition = 0;
+// qui setto il moltiplicatore di penalità ed i numeri fortunati/sfortunati
+let penalties = 0;
+const unluckyNumber = 5;
+const luckyNumber = 7;
 
 // questa è una funzione che mi serve a muovere il mio giocatore 1 sul tabellone
-const player1Position = () => {
-  // queste prime 2 righe mi servono per ricolorare di bianco la casella dove il giocarore giaceva prima del lancio del dado
-  const previousPlayerPosition = document.getElementById(previousPointPlayer1);
-  previousPlayerPosition.style.backgroundColor = "white";
-  // ... in queste 2 righe vado a colorare di blu la posizione attuale del giocatore 1
-  const playerPosition = document.getElementById(currentPointPlayer1);
-  playerPosition.style.backgroundColor = "blue";
-  // ... ed infine qui vado ad aggiornare l'ultima posizione del giocatore 1 con la posizione corrente
-  previousPointPlayer1 = currentPointPlayer1;
+const player1Position = (diceResult) => {
+  // imposto una variabile per contare quanto tempo è passato nel mio intervallo
+  let control = 0;
+  // questo intervallo serve solo a farmi vavere l'illusione di un movimento fluido della pedina
+  // sul tabellone casella per casella
+  let intervalID = setInterval(moveThePlayer, 200);
+  function moveThePlayer() {
+    if (control != diceResult) {
+      // queste prime 2 righe mi servono per ricolorare di bianco la casella dove il giocarore giaceva prima del lancio del dado
+      const previousPlayerPosition = document.getElementById(playerOnePosition);
+      previousPlayerPosition.style.backgroundColor = "white";
+      // qui verifico se il risultato del dado è negativo o meno, e in caso sposto di una posizione avanti o indietro il player
+      diceResult >= 0 ? playerOnePosition++ : playerOnePosition--;
+      // con questi 2 if qui, evito che andando avanti o indietro dal 40 all'1 si impalli il programma
+      if (playerOnePosition > lastPossibleId)
+        playerOnePosition -= lastPossibleId + 1;
+      if (playerOnePosition < 0) playerOnePosition += lastPossibleId + 1;
+      // ... in queste 2 righe vado a colorare di blu la posizione attuale del giocatore 1
+      const playerPosition = document.getElementById(playerOnePosition);
+      playerPosition.style.backgroundColor = "blue";
+    } else {
+      // qui chiamo la funzione per controllare la posizione del mio player se non ricade in un numero fortunato/sfortunato
+      checkposition();
+      // e qui azzero l'intervallo di tempo (che ho settato sui 200 ms)
+      clearInterval(intervalID);
+    }
+    // qui aumento la variabile controllo in positivo o negativo in base al valore del dado tirato moltiplicata per la penalità
+    diceResult >= 0 ? control++ : control--;
+  }
+};
+
+// funzione per assegnare le penalità in base alla posizione
+const checkposition = () => {
+  if ((playerOnePosition + 1) % unluckyNumber == 0) {
+    penalties = -2;
+  }
+  if ((playerOnePosition + 1) % luckyNumber == 0) {
+    penalties = 2;
+  }
 };
 
 // questa funzione serve per creare il campo di gioco
@@ -60,6 +92,13 @@ const createBoard = () => {
         casella.id = idCounter;
         casella.textContent = idCounter + 1;
         casella.className = "caselle";
+        // coloro col bordo rosso le caselle sfortunate, gialle quelle fortunate
+        if (parseInt(casella.textContent) % unluckyNumber == 0) {
+          casella.style.borderColor = "red";
+        }
+        if (parseInt(casella.textContent) % luckyNumber == 0) {
+          casella.style.borderColor = "yellow";
+        }
         riga.appendChild(casella);
         idCounter++;
       }
@@ -71,6 +110,12 @@ const createBoard = () => {
           casella.id = idReverseCounter;
           casella.textContent = idReverseCounter + 1;
           casella.className = "caselle";
+          if (parseInt(casella.textContent) % unluckyNumber == 0) {
+            casella.style.borderColor = "red";
+          }
+          if (parseInt(casella.textContent) % luckyNumber == 0) {
+            casella.style.borderColor = "yellow";
+          }
           riga.appendChild(casella);
           idReverseCounter--;
         }
@@ -88,6 +133,12 @@ const createBoard = () => {
             casella.textContent = idCounter + 1;
             idCounter++;
           }
+          if (parseInt(casella.textContent) % unluckyNumber == 0) {
+            casella.style.borderColor = "red";
+          }
+          if (parseInt(casella.textContent) % luckyNumber == 0) {
+            casella.style.borderColor = "yellow";
+          }
           riga.appendChild(casella);
         }
       }
@@ -96,7 +147,8 @@ const createBoard = () => {
 };
 
 // questa è la stessa funzione che ci ha dato Mazziotti, con in più il controllo
-// se ho già ricevuto o meno il risultato del lancio del dado, per poterlo ripetere
+// se ho già ricevuto o meno il risultato del lancio del dado, per poterlo ripetere.
+// in più adesso ho anche aggiunto il controllo delle penalità
 function lancio() {
   if (clickControl == true) {
     clickControl = false;
@@ -106,17 +158,24 @@ function lancio() {
     function myCallback() {
       if (ctrl <= 20) {
         faccia = parseInt(Math.random() * 6);
-        document.getElementById("diceBoxDiv").style.backgroundImage =
+        document.getElementById("diceButton").style.backgroundImage =
           "url(" + dado[faccia] + ")";
       } else {
         clearInterval(intervalID);
-        console.log("è uscito il " + (faccia + 1));
-        // vado aggiornare la variabile della posizione attuale
-        currentPointPlayer1 = currentPointPlayer1 + faccia + 1;
-        // con questo if vado ad evitare di cercare un id superiore all'ultimo id possibile
-        if (currentPointPlayer1 > lastPossibleId)
-          currentPointPlayer1 -= lastPossibleId + 1;
-        player1Position(currentPointPlayer1);
+        if (penalties != 0) {
+          console.log(
+            "è uscito " +
+              (faccia + 1) +
+              ", quindi in base al premio o alla penalità ti sposti di " +
+              penalties * (faccia + 1)
+          );
+          player1Position(penalties * (faccia + 1));
+          console.log(penalties * (faccia + 1));
+          penalties = 0;
+        } else {
+          console.log("è uscito il " + (faccia + 1));
+          player1Position(faccia + 1);
+        }
         clickControl = true;
       }
       ctrl++;
@@ -124,6 +183,9 @@ function lancio() {
   }
 }
 
-document.getElementById("button1").addEventListener("click", lancio);
+// qui inizializzo le funzioni e gli elementi che devono partire quando apro la pagina
+const diceButton = document.getElementById("diceButton");
+diceButton.style.backgroundImage = "url(" + dado[0] + ")";
+diceButton.addEventListener("click", lancio);
 createBoard();
-player1Position(previousPointPlayer1);
+document.getElementById(playerOnePosition).style.backgroundColor = "blue";

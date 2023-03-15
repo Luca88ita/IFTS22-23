@@ -12,13 +12,28 @@
     <header>
       <a href="../index.html"><button>Torna indietro</button></a>
     </header>
-    <section id="section1">
-      <div id="board"></div>
-    </section>
-    <section id="section2">
-      <button id="button1">lancio dado</button>
-      <div id="diceBoxDiv"></div>
-    </section>
+    <main>
+      <div>
+        <p>Regole del gioco</p>
+        <ul>
+          <li>Per tirare il dado clicca sul dado</li>
+          <li>
+            se capiti su un multiplo di 4 (escluso il 28), il prossimo tiro ti
+            fa tornare indietro di un numero di caselle pari al doppio del
+            numero ottenuto
+          </li>
+          <li>
+            se capiti su un multiplo di 7, il prossimo tiro ti fa andare avanti
+            di un numero di caselle pari al doppio del numero ottenuto
+          </li>
+        </ul>
+      </div>
+      <section id="section1">
+        <button id="diceButton"></button>
+        <div id="board"></div>
+      </section>
+    </main>
+
     <script src="../scripts/goosegame.js"></script>
   </body>
 </html>
