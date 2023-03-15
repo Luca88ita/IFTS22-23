@@ -1,4 +1,4 @@
-package home;
+package home.java;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class Home004 {
   public static void main(String[] args) {
-    try(Scanner scn = new Scanner(System.in)){
+    try (Scanner scn = new Scanner(System.in)) {
       System.out.println("Inserisci quante monete da 5 centesimi hai in tasca");
       int fiveCent = scn.nextInt();
       System.out.println("Inserisci quante monete da 10 centesimi hai in tasca");
@@ -16,7 +16,8 @@ public class Home004 {
       int twentyCent = scn.nextInt();
       System.out.println("Inserisci quante monete da 50 centesimi hai in tasca");
       int fiftyCent = scn.nextInt();
-      System.out.println("In tasca hai "+(0.05*fiveCent+0.10*tenCent+0.20*twentyCent+0.50*fiftyCent)+" Euro");
+      System.out.println(
+          "In tasca hai " + (0.05 * fiveCent + 0.10 * tenCent + 0.20 * twentyCent + 0.50 * fiftyCent) + " Euro");
     }
   }
 }
