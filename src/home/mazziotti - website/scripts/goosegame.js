@@ -1,0 +1,129 @@
+// vado ad inizializzare le immagini del dado
+const dado = [
+  "../assets/dado/uno.png",
+  "../assets/dado/due.png",
+  "../assets/dado/tre.png",
+  "../assets/dado/quattro.png",
+  "../assets/dado/cinque.png",
+  "../assets/dado/sei.png",
+];
+
+// inizializzo il controllo del click del lancio del dado per prevenire click successivi finchè non ha smesso di rotolare
+let clickControl = true;
+// inizializzo il numero di caselle orizzontali (e anche verticali) del mio tabellone di gioco
+const boardDimension = 11;
+// il valore dell'ultimo id possibile è pari al quadrato della dimensione del tabellone,
+// meno il quadrato della (dimensione del tabellone-2) sottratto di uno (per il fatto che i miei id partono da 0)
+// P.S. questo se non capite perché, provate a disegnarlo, che è più comprensibile
+// altrimenti lo spiego quando venerdì facciamo la diretta su discord ;)
+const lastPossibleId =
+  Math.pow(boardDimension, 2) - Math.pow(boardDimension - 2, 2) - 1;
+// e qui ri-assegno lo stesso valore al contatore inverso che mi servirà dopo come modificabile
+let idReverseCounter = lastPossibleId;
+// inizializzo le variabili che mi vanno a segnare la posizione del mio giocatore 1
+// ... Ricordo che le 2 variabili qui sotto equivalgono all'id per come ho impostato
+// il programma
+let previousPointPlayer1 = 0;
+let currentPointPlayer1 = 0;
+
+// questa è una funzione che mi serve a muovere il mio giocatore 1 sul tabellone
+const player1Position = () => {
+  // queste prime 2 righe mi servono per ricolorare di bianco la casella dove il giocarore giaceva prima del lancio del dado
+  const previousPlayerPosition = document.getElementById(previousPointPlayer1);
+  previousPlayerPosition.style.backgroundColor = "white";
+  // ... in queste 2 righe vado a colorare di blu la posizione attuale del giocatore 1
+  const playerPosition = document.getElementById(currentPointPlayer1);
+  playerPosition.style.backgroundColor = "blue";
+  // ... ed infine qui vado ad aggiornare l'ultima posizione del giocatore 1 con la posizione corrente
+  previousPointPlayer1 = currentPointPlayer1;
+};
+
+// questa funzione serve per creare il campo di gioco
+// facendola breve, questa funzione renderizza n caselle (definite nella costante boardDimension)
+// da sinistra verso destra. Per la prima la renderizza in maniera normale,
+// dalla seconda alla penultima renderizza solo le 2 caselle che tramite il css
+// vado a mettere alle estremità del tabellone di gioco, e l'ultima la renderizza
+// come la prima. In più vado ad assegnare degli id univoci e del testo ad ogni casella
+const createBoard = () => {
+  const boardDiv = document.getElementById("board");
+  let board = [];
+  let idCounter = 0;
+
+  for (let i = 0; i < boardDimension; i++) {
+    const riga = document.createElement("div");
+    riga.className = "riga";
+    boardDiv.appendChild(riga);
+    if (i == 0) {
+      for (let j = 0; j < boardDimension; j++) {
+        const casella = document.createElement("div");
+        // qui utilizzo un normalissimo contatore per andare da 0 a boardDimension-1
+        casella.id = idCounter;
+        casella.textContent = idCounter + 1;
+        casella.className = "caselle";
+        riga.appendChild(casella);
+        idCounter++;
+      }
+    } else {
+      if (i == boardDimension - 1) {
+        for (let j = 0; j < boardDimension; j++) {
+          const casella = document.createElement("div");
+          // qui anzichè il contatore normale vado a prendere il contatore inverso per contare da 31 in giù
+          casella.id = idReverseCounter;
+          casella.textContent = idReverseCounter + 1;
+          casella.className = "caselle";
+          riga.appendChild(casella);
+          idReverseCounter--;
+        }
+      } else {
+        for (let j = 0; j < 2; j++) {
+          const casella = document.createElement("div");
+          casella.className = "caselle";
+          // qui devo fare così in modo da poter mettere 40...12, 39...13, 38...14, ecc...
+          if (j == 0) {
+            casella.id = idReverseCounter;
+            casella.textContent = idReverseCounter + 1;
+            idReverseCounter--;
+          } else {
+            casella.id = idCounter;
+            casella.textContent = idCounter + 1;
+            idCounter++;
+          }
+          riga.appendChild(casella);
+        }
+      }
+    }
+  }
+};
+
+// questa è la stessa funzione che ci ha dato Mazziotti, con in più il controllo
+// se ho già ricevuto o meno il risultato del lancio del dado, per poterlo ripetere
+function lancio() {
+  if (clickControl == true) {
+    clickControl = false;
+    let ctrl = 0;
+    let faccia = 0;
+    let intervalID = setInterval(myCallback, 10);
+    function myCallback() {
+      if (ctrl <= 20) {
+        faccia = parseInt(Math.random() * 6);
+        document.getElementById("diceBoxDiv").style.backgroundImage =
+          "url(" + dado[faccia] + ")";
+      } else {
+        clearInterval(intervalID);
+        console.log("è uscito il " + (faccia + 1));
+        // vado aggiornare la variabile della posizione attuale
+        currentPointPlayer1 = currentPointPlayer1 + faccia + 1;
+        // con questo if vado ad evitare di cercare un id superiore all'ultimo id possibile
+        if (currentPointPlayer1 > lastPossibleId)
+          currentPointPlayer1 -= lastPossibleId + 1;
+        player1Position(currentPointPlayer1);
+        clickControl = true;
+      }
+      ctrl++;
+    }
+  }
+}
+
+document.getElementById("button1").addEventListener("click", lancio);
+createBoard();
+player1Position(previousPointPlayer1);

@@ -49,7 +49,7 @@ const links = [
     key: 7,
   },
   {
-    href: "../mazziotti - website/pages/page9.html",
+    href: "../mazziotti - website/pages/goosegame.html",
     target: "_self",
     title: "Esercizio per casa - gioco dell'oca",
     key: 8,

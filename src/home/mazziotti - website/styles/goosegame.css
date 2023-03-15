@@ -1,0 +1,54 @@
+body {
+  background-color: aquamarine;
+}
+
+section {
+  width: 90vw;
+  height: 35vh;
+  background-color: darkgreen;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+#section1 {
+  width: 594px;
+  height: 594px;
+  background-color: darkgreen;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#board{
+  display: flex;
+  flex-direction: column;
+}
+
+.riga{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.caselle{
+  display: flex;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 30px;
+}
+
+#diceBoxDiv {
+  background-color: beige;
+  width: 124px;
+  height: 124px;
+  margin: 20px;
+  line-height: 10vw;
+  font-size: 30px;
+  text-align: center;
+}
+
+button {
+  width: 10vw;
+  height: 5vh;
+}
