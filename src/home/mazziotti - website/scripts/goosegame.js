@@ -8,8 +8,6 @@ const dado = [
   "../assets/dado/sei.png",
 ];
 
-// inizializzo il controllo del click del lancio del dado per prevenire click successivi finchè non ha smesso di rotolare
-let clickControl = true;
 // inizializzo il numero di caselle orizzontali (e anche verticali) del mio tabellone di gioco
 const boardDimension = 11;
 // il valore dell'ultimo id possibile è pari al quadrato della dimensione del tabellone,
@@ -18,15 +16,44 @@ const boardDimension = 11;
 // altrimenti lo spiego quando venerdì facciamo la diretta su discord ;)
 const lastPossibleId =
   Math.pow(boardDimension, 2) - Math.pow(boardDimension - 2, 2) - 1;
-// e qui ri-assegno lo stesso valore al contatore inverso che mi servirà dopo come modificabile
-let idReverseCounter = lastPossibleId;
 // inizializzo la variabile che mi va a segnare la posizione del mio giocatore 1
 // ... Ricordo che equivale all'id per come ho impostato il programma
-let playerOnePosition = 0;
-// qui setto il moltiplicatore di penalità ed i numeri fortunati/sfortunati
-let penalties = 0;
+let playerOnePosition;
+// inizializzo il controllo del click del lancio del dado per prevenire click successivi finchè non ha smesso di rotolare
+let clickControl = true;
+// qui creo la variabile chemi conterà il numero di tiri
+let diceRolls;
+// qui creo la variabile chemi conterà il numero di giri
+let lapsMade;
+// qui creo il moltiplicatore di penalità per i numeri fortunati/sfortunati
+let penalties;
+//qui dichiaro quali sono i numeri fortunati e sfortunati
 const unluckyNumber = 5;
 const luckyNumber = 7;
+
+// questa funzione mi va ad inizializzare tutte le variabili ed a creare/pulire il tabellone di gioco
+const resetBoard = () => {
+  diceRolls = 0;
+  lapsMade = 0;
+  playerOnePosition = 0;
+  penalties = 0;
+  const board = document.getElementById("board");
+  // pulisco il tabellone da tutti i suoi figli in caso non fosse la prima giocata
+  while (board.firstChild) {
+    board.removeChild(board.firstChild);
+  }
+  // qui ri-assegno il valore dell'ultimo id possibile al contatore inverso che mi servirà dopo come modificabile
+  idReverseCounter = lastPossibleId;
+  // richiamo la funzione per creare il tabellone di gioco
+  createBoard();
+  // e qui inizializzo il testo di alcuni elementi del DOM ed il colore della prima casella
+  document.getElementById("unluckyNr").textContent = unluckyNumber;
+  document.getElementById("luckyNr1").textContent = luckyNumber;
+  document.getElementById("luckyNr2").textContent = luckyNumber;
+  document.getElementById(playerOnePosition).style.backgroundColor = "blue";
+  document.getElementById("rolls").textContent = diceRolls;
+  document.getElementById("laps").textContent = lapsMade;
+};
 
 // questa è una funzione che mi serve a muovere il mio giocatore 1 sul tabellone
 const player1Position = (diceResult) => {
@@ -43,9 +70,16 @@ const player1Position = (diceResult) => {
       // qui verifico se il risultato del dado è negativo o meno, e in caso sposto di una posizione avanti o indietro il player
       diceResult >= 0 ? playerOnePosition++ : playerOnePosition--;
       // con questi 2 if qui, evito che andando avanti o indietro dal 40 all'1 si impalli il programma
-      if (playerOnePosition > lastPossibleId)
+      if (playerOnePosition > lastPossibleId) {
         playerOnePosition -= lastPossibleId + 1;
-      if (playerOnePosition < 0) playerOnePosition += lastPossibleId + 1;
+        lapsMade++;
+        document.getElementById("laps").textContent = lapsMade;
+      }
+      if (playerOnePosition < 0) {
+        playerOnePosition += lastPossibleId + 1;
+        lapsMade--;
+        document.getElementById("laps").textContent = lapsMade;
+      }
       // ... in queste 2 righe vado a colorare di blu la posizione attuale del giocatore 1
       const playerPosition = document.getElementById(playerOnePosition);
       playerPosition.style.backgroundColor = "blue";
@@ -60,13 +94,17 @@ const player1Position = (diceResult) => {
   }
 };
 
-// funzione per assegnare le penalità in base alla posizione
+// funzione per assegnare le penalità in base alla posizione e verificare la condizione di vittoria
 const checkposition = () => {
   if ((playerOnePosition + 1) % unluckyNumber == 0) {
     penalties = -2;
   }
   if ((playerOnePosition + 1) % luckyNumber == 0) {
     penalties = 2;
+  }
+  if (lapsMade == 3) {
+    document.getElementById("win").textContent = "Hai vinto!!!";
+    resetBoard();
   }
 };
 
@@ -78,8 +116,10 @@ const checkposition = () => {
 // come la prima. In più vado ad assegnare degli id univoci e del testo ad ogni casella
 const createBoard = () => {
   const boardDiv = document.getElementById("board");
-  let board = [];
   let idCounter = 0;
+  // queste 2 righe adattano la dimensione del tabellone di gioco al numero di caselle
+  document.getElementById("section1").style.width = 58 * boardDimension + "px";
+  document.getElementById("section1").style.height = 58 * boardDimension + "px";
 
   for (let i = 0; i < boardDimension; i++) {
     const riga = document.createElement("div");
@@ -151,6 +191,9 @@ const createBoard = () => {
 // in più adesso ho anche aggiunto il controllo delle penalità
 function lancio() {
   if (clickControl == true) {
+    document.getElementById("win").textContent = "";
+    diceRolls++;
+    document.getElementById("rolls").textContent = diceRolls;
     clickControl = false;
     let ctrl = 0;
     let faccia = 0;
@@ -187,5 +230,4 @@ function lancio() {
 const diceButton = document.getElementById("diceButton");
 diceButton.style.backgroundImage = "url(" + dado[0] + ")";
 diceButton.addEventListener("click", lancio);
-createBoard();
-document.getElementById(playerOnePosition).style.backgroundColor = "blue";
+resetBoard();

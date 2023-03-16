@@ -18,17 +18,27 @@
         <ul>
           <li>Per tirare il dado clicca sul dado</li>
           <li>
-            se capiti su un multiplo di 4 (escluso il 28), il prossimo tiro ti
-            fa tornare indietro di un numero di caselle pari al doppio del
-            numero ottenuto
+            se capiti su un multiplo di <span id="unluckyNr"></span> (esclusi i
+            multipli di <span id="luckyNr1"></span>), il prossimo tiro ti fa
+            tornare indietro di un numero di caselle pari al doppio del numero
+            ottenuto
           </li>
           <li>
-            se capiti su un multiplo di 7, il prossimo tiro ti fa andare avanti
-            di un numero di caselle pari al doppio del numero ottenuto
+            se capiti su un multiplo di <span id="luckyNr2"></span>, il prossimo
+            tiro ti fa andare avanti di un numero di caselle pari al doppio del
+            numero ottenuto
           </li>
+          <li>Si vince quando si completano 3 giri</li>
         </ul>
+        <div>
+          <p>Numero di tiri effettuati:</p>
+          <div id="rolls"></div>
+          <p>Numero di giri effettuati:</p>
+          <div id="laps"></div>
+        </div>
       </div>
       <section id="section1">
+        <div id="win"></div>
         <button id="diceButton"></button>
         <div id="board"></div>
       </section>
