@@ -28,16 +28,44 @@
             tiro ti fa andare avanti di un numero di caselle pari al doppio del
             numero ottenuto
           </li>
-          <li>Si vince quando si completano 3 giri</li>
+          <li>
+            Ottiene una vittoria il primo giocatore che completa
+            <span id="maxLaps"></span> giri
+          </li>
+          <li>
+            Il giocatore che ha perso ha diritto di iniziare per primo la
+            partita successiva
+          </li>
         </ul>
         <div>
-          <p>Numero di tiri effettuati:</p>
+          <p>Numero di vittorie:</p>
           <div>
-            <div id="rollsP1"></div>
+            <div class="playerName">P1</div>
+            <div class="playerName">P2</div>
           </div>
+          <div>
+            <div id="victoriesP1"></div>
+            <div id="victoriesP2"></div>
+          </div>
+
           <p>Numero di giri effettuati:</p>
           <div>
+            <div class="playerName">P1</div>
+            <div class="playerName">P2</div>
+          </div>
+          <div>
             <div id="lapsP1"></div>
+            <div id="lapsP2"></div>
+          </div>
+
+          <p>Numero di tiri effettuati:</p>
+          <div>
+            <div class="playerName">P1</div>
+            <div class="playerName">P2</div>
+          </div>
+          <div>
+            <div id="rollsP1"></div>
+            <div id="rollsP2"></div>
           </div>
         </div>
       </div>
@@ -48,6 +76,6 @@
       </section>
     </main>
 
-    <script src="../scripts/goosegame.js"></script>
+    <script src="../scripts/goosegame2.js"></script>
   </body>
 </html>

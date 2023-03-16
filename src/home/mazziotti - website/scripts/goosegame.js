@@ -21,6 +21,8 @@ const lastPossibleId =
 let playerOnePosition;
 // inizializzo il controllo del click del lancio del dado per prevenire click successivi finchè non ha smesso di rotolare
 let clickControl = true;
+// ...e finché l'animazione del movimento del giocatore non è terminata
+let animationOver = true;
 // qui creo la variabile chemi conterà il numero di tiri
 let diceRolls;
 // qui creo la variabile chemi conterà il numero di giri
@@ -51,12 +53,13 @@ const resetBoard = () => {
   document.getElementById("luckyNr1").textContent = luckyNumber;
   document.getElementById("luckyNr2").textContent = luckyNumber;
   document.getElementById(playerOnePosition).style.backgroundColor = "blue";
-  document.getElementById("rolls").textContent = diceRolls;
-  document.getElementById("laps").textContent = lapsMade;
+  document.getElementById("rollsP1").textContent = diceRolls;
+  document.getElementById("lapsP1").textContent = lapsMade;
 };
 
 // questa è una funzione che mi serve a muovere il mio giocatore 1 sul tabellone
 const player1Position = (diceResult) => {
+  animationOver = false;
   // imposto una variabile per contare quanto tempo è passato nel mio intervallo
   let control = 0;
   // questo intervallo serve solo a farmi vavere l'illusione di un movimento fluido della pedina
@@ -73,12 +76,12 @@ const player1Position = (diceResult) => {
       if (playerOnePosition > lastPossibleId) {
         playerOnePosition -= lastPossibleId + 1;
         lapsMade++;
-        document.getElementById("laps").textContent = lapsMade;
+        document.getElementById("lapsP1").textContent = lapsMade;
       }
       if (playerOnePosition < 0) {
         playerOnePosition += lastPossibleId + 1;
         lapsMade--;
-        document.getElementById("laps").textContent = lapsMade;
+        document.getElementById("lapsP1").textContent = lapsMade;
       }
       // ... in queste 2 righe vado a colorare di blu la posizione attuale del giocatore 1
       const playerPosition = document.getElementById(playerOnePosition);
@@ -88,6 +91,7 @@ const player1Position = (diceResult) => {
       checkposition();
       // e qui azzero l'intervallo di tempo (che ho settato sui 200 ms)
       clearInterval(intervalID);
+      animationOver = true;
     }
     // qui aumento la variabile controllo in positivo o negativo in base al valore del dado tirato moltiplicata per la penalità
     diceResult >= 0 ? control++ : control--;
@@ -190,10 +194,10 @@ const createBoard = () => {
 // se ho già ricevuto o meno il risultato del lancio del dado, per poterlo ripetere.
 // in più adesso ho anche aggiunto il controllo delle penalità
 function lancio() {
-  if (clickControl == true) {
+  if (clickControl == true && animationOver == true) {
     document.getElementById("win").textContent = "";
     diceRolls++;
-    document.getElementById("rolls").textContent = diceRolls;
+    document.getElementById("rollsP1").textContent = diceRolls;
     clickControl = false;
     let ctrl = 0;
     let faccia = 0;
@@ -206,17 +210,9 @@ function lancio() {
       } else {
         clearInterval(intervalID);
         if (penalties != 0) {
-          console.log(
-            "è uscito " +
-              (faccia + 1) +
-              ", quindi in base al premio o alla penalità ti sposti di " +
-              penalties * (faccia + 1)
-          );
           player1Position(penalties * (faccia + 1));
-          console.log(penalties * (faccia + 1));
           penalties = 0;
         } else {
-          console.log("è uscito il " + (faccia + 1));
           player1Position(faccia + 1);
         }
         clickControl = true;

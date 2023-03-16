@@ -11,6 +11,9 @@ main p{
   font-weight: 700;
 }
 main>div>div>div{
+  display: flex;
+}
+main>div>div>div>div{
   font-size: 3rem;
   text-align: center;
   background-color: white;
@@ -19,6 +22,15 @@ main>div>div>div{
   line-height: 5rem;
   border-radius: 50%;
   margin: 0 2rem;
+}
+#victoriesP1,
+#victoriesP2{
+  background-color: gold;
+  color: brown;
+}
+.playerName{
+  border-radius: 0;
+  background-color: transparent;
 }
 
 #section1 {
@@ -68,6 +80,14 @@ main>div>div>div{
   text-align: center;
   align-self: center;
   position: absolute;
+  cursor: pointer;
+  box-shadow: 5px 2px #303030;
+}
+#diceButton:active {
+  box-shadow: 2px 2px #303030;
+}
+#diceButton:hover {
+  opacity: 0.98;
 }
 
 header button{
