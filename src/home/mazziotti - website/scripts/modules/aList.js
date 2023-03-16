@@ -54,12 +54,17 @@ const links = [
     title: "Esercizio per casa - gioco dell'oca",
     key: 8,
   },
-
+  {
+    href: "../mazziotti - website/pages/goosegame2.html",
+    target: "_self",
+    title: "Esercizio per casa - gioco dell'oca - 2 giocatori",
+    key: 9,
+  },
   {
     href: "https:www.google.com/it",
     target: "_blank",
     title: "Ricerca Google",
-    key: 9,
+    key: 10,
   },
 ];
 
