@@ -1,0 +1,48 @@
+body{
+  background-color: aquamarine;
+}
+button{
+  border-radius: 6px;
+  background-color: #ffa500;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.25rem 1rem;
+  transition: 150ms;
+  border: none;
+  text-align: center;
+}
+button:hover{
+  background-color: #fdc45b;
+  cursor: pointer;
+}
+#lists{
+  display: flex;
+  align-items: center;
+}
+#lists>div{
+  display: flex;
+  flex-direction: column;
+}
+.listClass{
+  width: 15rem;
+}
+.listClass>p{
+  font-weight: 700;
+  text-align: center;
+}
+.moveElementsButtons{
+  text-align: center;
+}
+.moveElementsButtons>button{
+  margin: 1rem;
+}
+ul{
+  background-color: wheat;
+  height:200px;
+  overflow:hidden;
+  overflow-y:scroll;
+}
+.checked{
+  background-color: gray;
+}

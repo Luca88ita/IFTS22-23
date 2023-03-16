@@ -61,10 +61,16 @@ const links = [
     key: 9,
   },
   {
+    href: "../mazziotti - website/pages/todolist.html",
+    target: "_self",
+    title: "Esercizio per casa - to do list",
+    key: 10,
+  },
+  {
     href: "https:www.google.com/it",
     target: "_blank",
     title: "Ricerca Google",
-    key: 10,
+    key: 11,
   },
 ];
 
