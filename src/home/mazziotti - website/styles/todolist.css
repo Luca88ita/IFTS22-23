@@ -42,6 +42,12 @@ ul{
   height:200px;
   overflow:hidden;
   overflow-y:scroll;
+  padding:0 0.25rem;
+}
+li{
+  list-style: none;
+  margin: 0.25rem 0; 
+  word-wrap: break-word;
 }
 .checked{
   background-color: gray;
