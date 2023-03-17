@@ -40,25 +40,26 @@ function ready() {
   }
 
   clip = [
-    "./cards/auto.png",
-    "./cards/aereo.png",
-    "./cards/camion.png",
-    "./cards/elicottero.png",
-    "./cards/auto.png",
-    "./cards/aereo.png",
-    "./cards/camion.png",
-    "./cards/elicottero.png",
+    "../assets/cards/auto.png",
+    "../assets/cards/aereo.png",
+    "../assets/cards/camion.png",
+    "../assets/cards/elicottero.png",
+    "../assets/cards/auto.png",
+    "../assets/cards/aereo.png",
+    "../assets/cards/camion.png",
+    "../assets/cards/elicottero.png",
   ];
   clip2 = [...clip]; // serve per duplicare il contenuto di clip all'interno i clip2
-  clip2.sort(() => Math.random() -0.5); 
+  clip2.sort(() => Math.random() - 0.5);
 
   let i = 0;
 
-  cardsArray = sezione.getElementsByTagName("div");  // va a richiamare tutti i div che si trovano (o troveranno) all'interno della sezione "memory"
+  cardsArray = sezione.getElementsByTagName("div"); // va a richiamare tutti i div che si trovano (o troveranno) all'interno della sezione "memory"
 
-  for (elements of cardsArray) {  // elements rappresenta tutti gli elementi che vado ad iterare all'interno dell'array // in questo caso tutte le carte all'interno del mazzo
+  for (elements of cardsArray) {
+    // elements rappresenta tutti gli elementi che vado ad iterare all'interno dell'array // in questo caso tutte le carte all'interno del mazzo
     elements.id = "card" + i;
-    elements.style.backgroundImage = "url('./cards/cover.png')";
+    elements.style.backgroundImage = "url('../assets/cards/cover.png')";
     elements.addEventListener("click", mostra);
     i++;
   }
@@ -91,8 +92,8 @@ function mostra() {
     } else {
       let intervalID = setTimeout(myCallback, 1000);
       function myCallback() {
-        succ.style.backgroundImage = "url('./cards/cover.png')";
-        prec.style.backgroundImage = "url('./cards/cover.png')";
+        succ.style.backgroundImage = "url('../assets/cards/cover.png')";
+        prec.style.backgroundImage = "url('../assets/cards/cover.png')";
       }
     }
   }
