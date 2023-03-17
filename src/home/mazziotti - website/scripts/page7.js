@@ -10,28 +10,11 @@ function cambioBase() {
 /****************************************/
 nDivPics = 8;
 
-/*const createImageDivs = (sectionid, n, divid, eLNeed) => {
-  for (let i = 0; i < n; i++) {
-
-    const divs = document.createElement("div");
-    divs.setAttribute("id", divid + i);
-    const textButton = document.createTextNode("div" + i);
-    divs.appendChild(textButton);
-    document.getElementById(sectionid).appendChild(divs);
-    eLNeed === true
-      ? document.getElementById(divid + i).addEventListener("click", () => {
-        zeroToOne(divid, i);
-      })console.log("Ciao")
-      : (button.style.cursor = "default");
-  }
-};
-
-createImageDivs("memory", nDivPics, "pic", true);*/
-
 var precedente = false;
 prec = null;
 succ = null;
 var url;
+
 function ready() {
   let sezione = document.getElementById("memory"); //  sezione dove vado a costruire il campo di gioco
   for (let i = 0; i < 8; i++) {
@@ -64,7 +47,7 @@ function ready() {
     i++;
   }
 }
-
+let control = true;
 function mostra() {
   cardId = this.id;
   let punti = parseInt(document.getElementById("punteggio").textContent);
@@ -80,23 +63,27 @@ function mostra() {
     url = "url(" + clip2[cardIndex] + ")";
     prec = this;
   } else {
-    precedente = false;
-    succ = this;
-    console.log(url + "--" + "url(" + clip2[cardIndex] + ")" + precedente);
-    if (url == "url(" + clip2[cardIndex] + ")") {
-      let intervalID = setTimeout(myCallback, 1000);
-      function myCallback() {
-        succ.style.display = "none";
-        prec.style.display = "none";
-      }
-    } else {
-      let intervalID = setTimeout(myCallback, 1000);
-      function myCallback() {
-        succ.style.backgroundImage = "url('../assets/cards/cover.png')";
-        prec.style.backgroundImage = "url('../assets/cards/cover.png')";
+    if (control == true) {
+      control = false;
+      precedente = false;
+      succ = this;
+      console.log(url + "--" + "url(" + clip2[cardIndex] + ")" + precedente);
+      if (url == "url(" + clip2[cardIndex] + ")" && prec.id != succ.id) {
+        let intervalID = setTimeout(myCallback, 1000);
+        function myCallback() {
+          succ.style.display = "none";
+          prec.style.display = "none";
+        }
+      } else {
+        let intervalID = setTimeout(myCallback, 1000);
+        function myCallback() {
+          succ.style.backgroundImage = "url('../assets/cards/cover.png')";
+          prec.style.backgroundImage = "url('../assets/cards/cover.png')";
+        }
       }
     }
   }
+  control = true;
 }
 
 document.addEventListener("DOMContentLoaded", ready);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do list</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>Lista delle cose da fare</h1>
+    <input
+      type="text"
+      name="inputNewTask"
+      id="inputNewTask"
+      placeholder="Inserisci una nuova task"
+    />
+    <button id="insertButton">Inserisci</button>
+    <section>
+      <div>
+        <div class="subTitles">Cose da fare</div>
+        <div>
+          <ul id="toBeDone"></ul>
+        </div>
+      </div>
+      <div>
+        <button id="moveRight">>>></button>
+        <button id="moveLeft"><<<</button>
+        <button id="deleteLi">Elimina</button>
+      </div>
+      <div>
+        <div class="subTitles">Cestino</div>
+        <div>
+          <ul id="alreadyDone"></ul>
+        </div>
+      </div>
+    </section>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

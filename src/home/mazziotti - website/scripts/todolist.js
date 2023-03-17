@@ -16,7 +16,6 @@ const moveFromToDoToBin = () => {
   elementsSelectedFromToDo.forEach((element) => {
     document.getElementById(element).classList = "unchecked";
     alreadyDoneUl.appendChild(document.getElementById(element));
-    //toBeDoneUl.removeChild(document.getElementById(element));
   });
   elementsSelectedFromToDo = [];
 };
@@ -25,7 +24,6 @@ const moveFromBinToToDo = () => {
   elementsSelectedFromAlreadyDone.forEach((element) => {
     document.getElementById(element).classList = "unchecked";
     toBeDoneUl.appendChild(document.getElementById(element));
-    //toBeDoneUl.removeChild(document.getElementById(element));
   });
   elementsSelectedFromAlreadyDone = [];
 };

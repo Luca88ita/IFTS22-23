@@ -1,0 +1,52 @@
+section{
+    display: flex;
+    margin: 1rem 0 0 0;
+}
+section>div{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+}
+section>div>div:first-child{
+    font-weight: 700;
+    text-align: center;
+}
+.subTitles{
+    font-weight: 700;
+    text-align: center;
+}
+section>div>button{
+    padding: 0.25rem;
+    width: 5rem;
+    margin: 1rem;
+    background-color: gold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 150ms;
+    box-shadow: 2px 3px #acacac;
+}
+section>div>button:active{
+    box-shadow: 2px 1px #acacac;
+}
+section>div>button:hover{
+    background-color: yellow;
+}
+ul{
+    padding: 0.25rem;
+    height: 15rem;
+    width: 10rem;
+}
+li{
+    list-style: none;
+    margin: 0.25rem;
+}
+#toBeDone{
+    background-color: pink;
+}
+#alreadyDone{
+    background-color: lightblue;
+}
+.checked{
+    background-color: gray;
+}

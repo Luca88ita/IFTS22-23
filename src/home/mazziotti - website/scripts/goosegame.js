@@ -38,7 +38,7 @@ const resetBoard = () => {
   diceRolls = 0;
   lapsMade = 0;
   playerOnePosition = 0;
-  penalties = 0;
+  penalties = 1;
   const board = document.getElementById("board");
   // pulisco il tabellone da tutti i suoi figli in caso non fosse la prima giocata
   while (board.firstChild) {
@@ -209,12 +209,7 @@ function lancio() {
           "url(" + dado[faccia] + ")";
       } else {
         clearInterval(intervalID);
-        if (penalties != 0) {
-          player1Position(penalties * (faccia + 1));
-          penalties = 0;
-        } else {
-          player1Position(faccia + 1);
-        }
+        player1Position(penalties * (faccia + 1));
         clickControl = true;
       }
       ctrl++;
