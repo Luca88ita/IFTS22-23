@@ -13,8 +13,8 @@
       <a href="../index.html"><button>Torna indietro</button></a>
     </header>
     <main>
+      <p>Regole del gioco</p>
       <div>
-        <p>Regole del gioco</p>
         <ul>
           <li>Per tirare il dado clicca sul dado</li>
           <li>
@@ -29,51 +29,80 @@
             numero ottenuto
           </li>
           <li>
-            Ottiene una vittoria il primo giocatore che completa
+            Vince un round il primo giocatore che completa
             <span id="maxLaps"></span> giri
           </li>
           <li>
-            Il giocatore che ha perso ha diritto di iniziare per primo la
-            partita successiva
+            Il giocatore che ha perso ha diritto di iniziare per primo il round
+            successivo
+          </li>
+          <li>
+            Vince la partita il primo giocatore che completa
+            <span id="maxVics"></span> vittorie
+          </li>
+          <li>
+            Il giocatore che ha perso la partita ha diritto di iniziare per
+            primo quella successiva
           </li>
         </ul>
         <div>
-          <p>Numero di vittorie:</p>
           <div>
             <div class="playerName">P1</div>
             <div class="playerName">P2</div>
           </div>
+          <p>Numero di vittorie:</p>
           <div>
             <div id="victoriesP1"></div>
             <div id="victoriesP2"></div>
           </div>
-
           <p>Numero di giri effettuati:</p>
-          <div>
-            <div class="playerName">P1</div>
-            <div class="playerName">P2</div>
-          </div>
           <div>
             <div id="lapsP1"></div>
             <div id="lapsP2"></div>
           </div>
-
           <p>Numero di tiri effettuati:</p>
-          <div>
-            <div class="playerName">P1</div>
-            <div class="playerName">P2</div>
-          </div>
           <div>
             <div id="rollsP1"></div>
             <div id="rollsP2"></div>
           </div>
         </div>
       </div>
-      <section id="section1">
-        <div id="win"></div>
-        <button id="diceButton"></button>
-        <div id="board"></div>
-      </section>
+      <div>
+        <section>
+          <button id="resetTheGame">Reset</button>
+        </section>
+        <section id="settings">
+          <div>
+            <p>Inserisci la dimensione del tabellone:</p>
+            <p id="boardSizeInput"></p>
+            <div>
+              <button id="increaseSize">+</button>
+              <button id="decreaseSize">-</button>
+            </div>
+          </div>
+          <div>
+            <p>Inserisci il numero di giri:</p>
+            <p id="lapsInput"></p>
+            <div>
+              <button id="addLap">+</button>
+              <button id="removeLap">-</button>
+            </div>
+          </div>
+          <div>
+            <p>Inserisci il numero di vittorie:</p>
+            <p id="vicsInput"></p>
+            <div>
+              <button id="addVics">+</button>
+              <button id="removeVics">-</button>
+            </div>
+          </div>
+        </section>
+        <section id="section1">
+          <div id="win"></div>
+          <button id="diceButton"></button>
+          <div id="board"></div>
+        </section>
+      </div>
     </main>
 
     <script src="../scripts/goosegame2.js"></script>

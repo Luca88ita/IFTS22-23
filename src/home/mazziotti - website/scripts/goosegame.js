@@ -48,7 +48,7 @@ const resetBoard = () => {
   idReverseCounter = lastPossibleId;
   // richiamo la funzione per creare il tabellone di gioco
   createBoard();
-  // e qui inizializzo il testo di alcuni elementi del DOM ed il colore della prima casella
+  // e qui inizializzo il testo di alcuni elementi del DOM ed il colore della prima square
   document.getElementById("unluckyNr").textContent = unluckyNumber;
   document.getElementById("luckyNr1").textContent = luckyNumber;
   document.getElementById("luckyNr2").textContent = luckyNumber;
@@ -63,11 +63,11 @@ const player1Position = (diceResult) => {
   // imposto una variabile per contare quanto tempo è passato nel mio intervallo
   let control = 0;
   // questo intervallo serve solo a farmi vavere l'illusione di un movimento fluido della pedina
-  // sul tabellone casella per casella
+  // sul tabellone square per square
   let intervalID = setInterval(moveThePlayer, 200);
   function moveThePlayer() {
     if (control != diceResult) {
-      // queste prime 2 righe mi servono per ricolorare di bianco la casella dove il giocarore giaceva prima del lancio del dado
+      // queste prime 2 righe mi servono per ricolorare di bianco la square dove il giocarore giaceva prima del lancio del dado
       const previousPlayerPosition = document.getElementById(playerOnePosition);
       previousPlayerPosition.style.backgroundColor = "white";
       // qui verifico se il risultato del dado è negativo o meno, e in caso sposto di una posizione avanti o indietro il player
@@ -117,7 +117,7 @@ const checkposition = () => {
 // da sinistra verso destra. Per la prima la renderizza in maniera normale,
 // dalla seconda alla penultima renderizza solo le 2 caselle che tramite il css
 // vado a mettere alle estremità del tabellone di gioco, e l'ultima la renderizza
-// come la prima. In più vado ad assegnare degli id univoci e del testo ad ogni casella
+// come la prima. In più vado ad assegnare degli id univoci e del testo ad ogni square
 const createBoard = () => {
   const boardDiv = document.getElementById("board");
   let idCounter = 0;
@@ -126,64 +126,64 @@ const createBoard = () => {
   document.getElementById("section1").style.height = 58 * boardDimension + "px";
 
   for (let i = 0; i < boardDimension; i++) {
-    const riga = document.createElement("div");
-    riga.className = "riga";
-    boardDiv.appendChild(riga);
+    const row = document.createElement("div");
+    row.className = "row";
+    boardDiv.appendChild(row);
     if (i == 0) {
       for (let j = 0; j < boardDimension; j++) {
-        const casella = document.createElement("div");
+        const square = document.createElement("div");
         // qui utilizzo un normalissimo contatore per andare da 0 a boardDimension-1
-        casella.id = idCounter;
-        casella.textContent = idCounter + 1;
-        casella.className = "caselle";
+        square.id = idCounter;
+        square.textContent = idCounter + 1;
+        square.className = "squares";
         // coloro col bordo rosso le caselle sfortunate, gialle quelle fortunate
-        if (parseInt(casella.textContent) % unluckyNumber == 0) {
-          casella.style.borderColor = "red";
+        if (parseInt(square.textContent) % unluckyNumber == 0) {
+          square.style.borderColor = "red";
         }
-        if (parseInt(casella.textContent) % luckyNumber == 0) {
-          casella.style.borderColor = "yellow";
+        if (parseInt(square.textContent) % luckyNumber == 0) {
+          square.style.borderColor = "yellow";
         }
-        riga.appendChild(casella);
+        row.appendChild(square);
         idCounter++;
       }
     } else {
       if (i == boardDimension - 1) {
         for (let j = 0; j < boardDimension; j++) {
-          const casella = document.createElement("div");
+          const square = document.createElement("div");
           // qui anzichè il contatore normale vado a prendere il contatore inverso per contare da 31 in giù
-          casella.id = idReverseCounter;
-          casella.textContent = idReverseCounter + 1;
-          casella.className = "caselle";
-          if (parseInt(casella.textContent) % unluckyNumber == 0) {
-            casella.style.borderColor = "red";
+          square.id = idReverseCounter;
+          square.textContent = idReverseCounter + 1;
+          square.className = "squares";
+          if (parseInt(square.textContent) % unluckyNumber == 0) {
+            square.style.borderColor = "red";
           }
-          if (parseInt(casella.textContent) % luckyNumber == 0) {
-            casella.style.borderColor = "yellow";
+          if (parseInt(square.textContent) % luckyNumber == 0) {
+            square.style.borderColor = "yellow";
           }
-          riga.appendChild(casella);
+          row.appendChild(square);
           idReverseCounter--;
         }
       } else {
         for (let j = 0; j < 2; j++) {
-          const casella = document.createElement("div");
-          casella.className = "caselle";
+          const square = document.createElement("div");
+          square.className = "squares";
           // qui devo fare così in modo da poter mettere 40...12, 39...13, 38...14, ecc...
           if (j == 0) {
-            casella.id = idReverseCounter;
-            casella.textContent = idReverseCounter + 1;
+            square.id = idReverseCounter;
+            square.textContent = idReverseCounter + 1;
             idReverseCounter--;
           } else {
-            casella.id = idCounter;
-            casella.textContent = idCounter + 1;
+            square.id = idCounter;
+            square.textContent = idCounter + 1;
             idCounter++;
           }
-          if (parseInt(casella.textContent) % unluckyNumber == 0) {
-            casella.style.borderColor = "red";
+          if (parseInt(square.textContent) % unluckyNumber == 0) {
+            square.style.borderColor = "red";
           }
-          if (parseInt(casella.textContent) % luckyNumber == 0) {
-            casella.style.borderColor = "yellow";
+          if (parseInt(square.textContent) % luckyNumber == 0) {
+            square.style.borderColor = "yellow";
           }
-          riga.appendChild(casella);
+          row.appendChild(square);
         }
       }
     }
@@ -210,6 +210,7 @@ function lancio() {
       } else {
         clearInterval(intervalID);
         player1Position(penalties * (faccia + 1));
+        penalties = 1;
         clickControl = true;
       }
       ctrl++;
