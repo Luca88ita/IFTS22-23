@@ -1,3 +1,5 @@
+import { changePageIndex } from "../main2.js";
+
 const fulfillSection1 = (array, index) => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement("div");
@@ -22,7 +24,7 @@ const fulfillSection2 = (array, index) => {
       div.appendChild(h3);
       h3.addEventListener("click", () => {
         const i2 = array.indexOf(element);
-        changeElements(array, i2);
+        changePageIndex(i2);
       });
     }
     i++;
