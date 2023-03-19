@@ -43,47 +43,58 @@ function ready() {
     // elements rappresenta tutti gli elementi che vado ad iterare all'interno dell'array // in questo caso tutte le carte all'interno del mazzo
     elements.id = "card" + i;
     elements.style.backgroundImage = "url('../assets/cards/cover.png')";
+    elements.style.backgroundSize = "100%";
     elements.addEventListener("click", mostra);
     i++;
   }
 }
 let control = true;
+
 function mostra() {
-  cardId = this.id;
-  let punti = parseInt(document.getElementById("punteggio").textContent);
-  punti++;
-  document.getElementById("punteggio").textContent = punti;
+  if (control == true) {
+    cardId = this.id;
+    let punti = parseInt(document.getElementById("punteggio").textContent);
 
-  let cardIndex = cardId.slice(4, cardId.length);
-  this.style.backgroundImage = "url(" + clip2[cardIndex] + ")";
-
-  if (precedente == false) {
-    precedente = true;
-    console.log("dop" + precedente);
-    url = "url(" + clip2[cardIndex] + ")";
-    prec = this;
-  } else {
-    if (control == true) {
-      control = false;
-      precedente = false;
-      succ = this;
-      console.log(url + "--" + "url(" + clip2[cardIndex] + ")" + precedente);
-      if (url == "url(" + clip2[cardIndex] + ")" && prec.id != succ.id) {
-        let intervalID = setTimeout(myCallback, 1000);
-        function myCallback() {
-          succ.style.display = "none";
-          prec.style.display = "none";
-        }
-      } else {
-        let intervalID = setTimeout(myCallback, 1000);
-        function myCallback() {
-          succ.style.backgroundImage = "url('../assets/cards/cover.png')";
-          prec.style.backgroundImage = "url('../assets/cards/cover.png')";
+    let cardIndex = cardId.slice(4, cardId.length);
+    this.style.backgroundImage = "url(" + clip2[cardIndex] + ")";
+    this.style.backgroundSize = "100%";
+    if (precedente == false) {
+      precedente = true;
+      url = "url(" + clip2[cardIndex] + ")";
+      prec = this;
+      punti++;
+      document.getElementById("punteggio").textContent = punti;
+    } else {
+      if (prec != this) {
+        punti++;
+        document.getElementById("punteggio").textContent = punti;
+        control = false;
+        precedente = false;
+        succ = this;
+        if (url == "url(" + clip2[cardIndex] + ")" && prec.id != succ.id) {
+          let intervalID = setTimeout(myCallback, 500);
+          function myCallback() {
+            succ.style.display = "none";
+            prec.style.display = "none";
+            prec = null;
+            succ = null;
+            control = true;
+          }
+        } else {
+          let intervalID = setTimeout(myCallback, 500);
+          function myCallback() {
+            succ.style.backgroundImage = "url('../assets/cards/cover.png')";
+            succ.style.backgroundSize = "100%";
+            prec.style.backgroundImage = "url('../assets/cards/cover.png')";
+            prec.style.backgroundSize = "100%";
+            prec = null;
+            succ = null;
+            control = true;
+          }
         }
       }
     }
   }
-  control = true;
 }
 
 document.addEventListener("DOMContentLoaded", ready);
