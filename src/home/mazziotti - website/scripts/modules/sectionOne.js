@@ -1,9 +1,8 @@
 // cre una funzione "SectionOne" che mi andrà a renderizzare alcuni elementi nel DOM. Riceve come parametri l'id del genitore tramite "parentId", e un oggetto "catDatas" contenente i dati da visualizzare
-const SectionOne = (parentId, catDatas) => {
+const SectionOne = (catDatas) => {
   // creo una sezione nel DOM, alla quale definisco un id, e che vado ad appendere al genitore che gli passo tramite la funzione
   const section = document.createElement("section");
   section.id = "section1";
-  parentId.appendChild(section);
 
   // creo un div che va ad appendersi al mio elemento sezione...
   const sectionDiv = document.createElement("div");
@@ -72,6 +71,8 @@ const SectionOne = (parentId, catDatas) => {
   const sectionDivDiv2PSpan2 = document.createElement("span");
   sectionDivDiv2PSpan2.textContent = " " + catDatas.contactDetails;
   sectionDivDiv2P.appendChild(sectionDivDiv2PSpan2);
+
+  return section;
 };
 
 // per completare esporto la funzione che va a crearmi la prima sezione del Main

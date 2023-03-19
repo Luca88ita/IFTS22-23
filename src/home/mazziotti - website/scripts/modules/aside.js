@@ -2,12 +2,11 @@
 import AList from "./aList.js";
 import ButtonList from "./buttonList.js";
 
-// creo una funzione "Aside" che prende come parametri il genitore e l'url dell'immagine di background
-const Aside = (parentId, sideImg) => {
+// creo una funzione "Aside" che prende come parametro l'url dell'immagine di background
+const Aside = (sideImg) => {
   // creo un elemento aside al quale do un id e che appendo al genitore fornitotramite la funzione
   const aside = document.createElement("aside");
   aside.id = "aside";
-  parentId.appendChild(aside);
 
   // creo una immagine che andrò a mettere come sfondo alla barra laterale e le do tutte le proprietà (in realtà si poteva fare anche senza creazione dell'immagine, ma semplicemente mettendo in aside.style.backgroundImage l'url dell'immagine di sfondo)
   const sidebar = document.createElement("img");
@@ -24,8 +23,9 @@ const Aside = (parentId, sideImg) => {
   ul.id = "navUl";
   nav.appendChild(ul);
   // richiamo le 2 funzioni e le appendo alla lista non ordinata
-  ButtonList(ul);
-  AList(ul);
+  ul.appendChild(ButtonList());
+  ul.appendChild(AList());
+  return aside;
 };
 
 // esporto il tutto

@@ -1,7 +1,3 @@
-// importo due funzioni che sono all'interno di "main.js" che mi servirà utilizzare dopo
-import { defaultPage, showPage } from "./main.js";
-
-// creo un array di oggetti che conterrà i dati che dovranno essere visualizzati nel "Main"
 const catsDetails = [
   {
     id: 1,
@@ -60,47 +56,8 @@ const catsDetails = [
   },
 ];
 
-// creo una funzione che mi ritorni un array con gli oggetti diversi da quello presente nell'indice che andiamo a fornire come argomento
-const updatedSectionTwoElements = (elementIndex) => {
-  // qui vado a re-inizializzare la copia dell'array con tutti i dati
-  const remainingElements = [...catsDetails];
-  // e qui lo vado ad eliminare dall'array appena creato in modo che io possa passare alla funzione showPage gli argomenti di ciò che dovrà caricare nella sezione 1 e nella sezione 2 (per non ripetere nella sezione 2 l'elemento già visualizzato in sezione 1)
-  remainingElements.splice(elementIndex, 1);
-  // equi ritorno l'array di ogetti epurato dall'elemento selezionato con l'indice
-  return remainingElements;
+const contents = () => {
+  return catsDetails;
 };
 
-const ButtonList = () => {
-  const fragment = document.createDocumentFragment();
-  // qui vado ad inizializzare una copia dell'array con tutti i dati
-  let elementsLeft = [...catsDetails];
-  // qui indico l'indice all'interno dell'array dell'elemento che verrà visualizzato nella prima sezione
-  let index = 0;
-  // e qui lo vado ad eliminare dall'array appena creato...
-  elementsLeft.splice(index, 1);
-  // in modo che quando vado a richiamare la funzione "defaultPage" (contenuta in "main.js" ed importata qui), alla quale passo come argomenti il primo oggetto dell'array "catsDetails", e l'array con gli oggetti rimanenti, mi carichi i dati di default nel mio "Main"
-  defaultPage(catsDetails[index], elementsLeft);
-
-  // con questo ciclo for...each vado a scorrere l'array di oggetti "catsDetails" e metto uno per uno gli oggetti ivi contenuti dentro la variabile temporanea "element"
-  catsDetails.forEach((element) => {
-    // creo l'elemento "li", gli do un id univoco e lo appendo al genitore fragment
-    const li = document.createElement("li");
-    li.id = "buttonList__li" + element.id;
-    fragment.appendChild(li);
-    // creo un elemento "button" al quale do un testo preso dal titolo dell'elemento che sto scorrendo, e che appendo all'elemento "li"
-    const button = document.createElement("button");
-    button.textContent = element.name;
-    li.appendChild(button);
-    // creo un "EventListener" collegato al click del bottone appena creato. Essendo creato all'interno di un ciclo for, questo creerà tanti event listeners diversi quanti bottoni vado a creare
-    button.addEventListener("click", () => {
-      // qui cerco l'indice all'interno dell'array dell'elemento che verrà visualizzato nella prima sezione
-      index = catsDetails.indexOf(element);
-      // tramite una funzione freccia anonima vado a dire che cliccando il bottone, deve richiamarmi la funzione "showPage" (contenuta in "main.js" ed importata qui) alla quale passo come argomenti argomenti l'oggetto selezionato dell'array "catsDetails", e l'array con gli oggetti rimanenti diversi dall'elemento selezionato
-      showPage(element, updatedSectionTwoElements(index));
-    });
-  });
-  return fragment;
-};
-
-// esporto il tutto
-export default ButtonList;
+export default contents;

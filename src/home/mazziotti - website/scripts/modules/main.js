@@ -15,13 +15,13 @@ const innerContent = (content) => {
   title1.textContent = "In evidenza:";
   main.appendChild(title1);
   // richiamo la funzione "SectionOne" alla quale passo il genitore e l'oggetto con il contenuto da visualizzare
-  SectionOne(main, content[0]);
+  main.appendChild(SectionOne(content[0]));
   // creo un secondo titolo h2 che vado ad appendere al main e gli do un testo
   const title2 = document.createElement("h2");
   title2.textContent = "Altri aMici che ti attendono!!!";
   main.appendChild(title2);
   // richiamo la funzione "SectionTwo" alla quale passo il genitore e l'oggetto con il contenuto da visualizzare
-  SectionTwo(main, content[1]);
+  main.appendChild(SectionTwo(content[1]));
 };
 
 // creo una funzione esportabile che riceve come argomento un oggetto con i dati per caricare successivamente una pagina di default. Questa deve essere caricata SOLO alla prima apertura della pagina, cosa che verifico tramite l'if
@@ -47,9 +47,9 @@ export const showPage = (section1ToShow, section2ToShow) => {
   innerContent(currentShown);
 };
 
-const Main = (parentId) => {
+const Main = () => {
   // l'unica cosa che questa funzione dovrà fare è quella di appendere il main all'interno della variabile genitore
-  parentId.appendChild(main);
+  return main;
 };
 
 export default Main;

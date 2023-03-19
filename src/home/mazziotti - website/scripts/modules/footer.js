@@ -2,10 +2,9 @@
 const phone = "0000000";
 const email = "gatti@gatti.com";
 
-const Footer = (parentId) => {
+const Footer = () => {
   // creo un elemento footer che appendo al genitore che ci viene passato dalla funzione
   const footer = document.createElement("footer");
-  parentId.appendChild(footer);
   // creo un elemento paragrafo che vado ad appendere al nostro footer, ed al quale do un testo
   const paragraph1 = document.createElement("p");
   paragraph1.textContent = "I nostri contatti:";
@@ -24,6 +23,7 @@ const Footer = (parentId) => {
   const paragraph2 = document.createElement("p");
   paragraph2.textContent = "Copyright \u00A9";
   footer.appendChild(paragraph2);
+  return footer;
 };
 
 // esporto il tutto

@@ -1,9 +1,8 @@
 import { showPage } from "./main.js";
 
-const SectionTwo = (parentId, cardsArray) => {
+const SectionTwo = (cardsArray) => {
   const section = document.createElement("section");
   section.id = "section2";
-  parentId.appendChild(section);
 
   cardsArray.forEach((element) => {
     const sectionDiv = document.createElement("div");
@@ -36,6 +35,7 @@ const SectionTwo = (parentId, cardsArray) => {
     sectionDivPSpan2.textContent = element.long;
     sectionDivP.appendChild(sectionDivPSpan2);
   });
+  return section;
 };
 
 export default SectionTwo;
