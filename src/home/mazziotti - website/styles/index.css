@@ -66,6 +66,8 @@ nav{
 
 ul{
   list-style: none;
+  overflow:hidden;
+  overflow-y:scroll;
 }
 
 li{
