@@ -7,6 +7,21 @@ const dice = [
   "../assets/dado/sei.png",
 ];
 
+let maxVictories = 3;
+let maxLaps = 3;
+let boardDimension = 11;
+let lastPossibleId;
+const unluckyNumber = 5;
+const luckyNumber = 7;
+let playerPosition = [];
+let clickControl = true;
+let animationOver = true;
+let diceRolls = [];
+let lapsMade = [];
+let victories = [0, 0];
+let penalties = [];
+let playerIndex = 0;
+
 const resetBoard = () => {
   lastPossibleId =
     Math.pow(boardDimension, 2) - Math.pow(boardDimension - 2, 2) - 1;
@@ -73,20 +88,7 @@ const movePlayer = (diceResult) => {
 
 const checkposition = () => {
   /*******/
-  let maxVictories = 3;
-  let maxLaps = 3;
-  let boardDimension = 11;
-  let lastPossibleId;
-  const unluckyNumber = 5;
-  const luckyNumber = 7;
-  let playerPosition = [];
-  let clickControl = true;
-  let animationOver = true;
-  let diceRolls = [];
-  let lapsMade = [];
-  let victories = [0, 0];
-  let penalties = [];
-  let playerIndex = 0;
+
   /*******/
   if ((playerPosition[playerIndex] + 1) % unluckyNumber == 0) {
     penalties[playerIndex] = -2;
